@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.epicodus.concertaid.MainActivity">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/background1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Concert Aid"
+        android:id="@+id/tvDisplayZipCode"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="#0288D1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Please Enter Login Info below"
+        android:id="@+id/tvLoginMessage"
+        android:layout_marginTop="62dp"
+        android:textColor="#0288D1"
+        android:textSize="24sp"
+        android:layout_below="@+id/tvDisplayZipCode"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etUsername"
+        android:hint="Enter User Name"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="#0288D1"
+        android:textColorHint="#0288D1"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/etPassword"
+        android:layout_toStartOf="@+id/etPassword" />
+
+    <EditText
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etPassword"
+        android:hint="Enter Password"
+        android:gravity="center"
+        android:textColor="#0288D1"
+        android:textColorHint="#0288D1"
+        android:textStyle="bold|italic"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignTop="@+id/etUsername" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/submitLoginButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#0288D1" />
+
+
+</RelativeLayout>
