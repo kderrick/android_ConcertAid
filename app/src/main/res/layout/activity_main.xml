@@ -42,7 +42,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etUsername"
+        android:id="@+id/editTextUsername"
         android:hint="Enter User Name"
         android:textSize="18sp"
         android:gravity="center"
@@ -50,8 +50,8 @@
         android:textColorHint="#0288D1"
         android:textStyle="bold"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/etPassword"
-        android:layout_toStartOf="@+id/etPassword" />
+        android:layout_toLeftOf="@+id/editTextPassword"
+        android:layout_toStartOf="@+id/editTextPassword" />
 
     <EditText
         android:textSize="18sp"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/etPassword"
+        android:id="@+id/editTextPassword"
         android:hint="Enter Password"
         android:gravity="center"
         android:textColor="#0288D1"
@@ -68,7 +68,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView"
-        android:layout_alignTop="@+id/etUsername" />
+        android:layout_alignTop="@+id/editTextUsername" />
 
     <Button
         android:layout_width="wrap_content"

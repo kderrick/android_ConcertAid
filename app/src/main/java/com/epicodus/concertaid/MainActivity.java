@@ -12,8 +12,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.submitLoginButton) Button mSubmitLoginButton;
-    @Bind(R.id.etUsername) EditText mETUsername;
-    @Bind(R.id.etPassword) EditText mETPassword;
+    @Bind(R.id.editTextUsername) EditText mEditTextUsername;
+    @Bind(R.id.editTextPassword) EditText mEditTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mSubmitLoginButton) {
-            String userName = mETUsername.getText().toString();
-            String userPassword = mETPassword.getText().toString();
+            String userName = mEditTextUsername.getText().toString();
+            String userPassword = mEditTextPassword.getText().toString();
 
             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             intent.putExtra("userName", userName);

@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.tvWelcome) TextView mTVWelcome;
     @Bind(R.id.etZipCode) EditText mEDZipCode;
-    @Bind(R.id.submitZipButton) Button mSubmitZipButton;
+    @Bind(R.id.submitButton) Button mSubmitZipButton;
 
 
     @Override
@@ -32,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        if (v == mSubmitZipButton) {
+        if (v == mSubmitButton) {
             String userZip = mEDZipCode.getText().toString();
 
             Intent intent = new Intent(WelcomeActivity.this, DisplayActivity.class);
