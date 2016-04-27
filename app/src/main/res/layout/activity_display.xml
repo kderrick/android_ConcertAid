@@ -25,11 +25,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="52dp"  />
 
+    <TextView
+        android:id="@android:id/text1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:paddingLeft="6dip"
+        android:textColor="#0288D1"
+        android:paddingRight="10dip"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lvDisplayConcerts"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:textColor="#0288d1"
         android:layout_below="@+id/tvDisplayZipCode" />
 </RelativeLayout>

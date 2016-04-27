@@ -1,6 +1,7 @@
 package com.epicodus.concertaid;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,13 +35,6 @@ public class DisplayActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, concerts);
         mLVDisplayConcerts.setAdapter(adapter);
 
-//        mLVDisplayConcerts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String concert = ((TextView)view).getText().toString();
-//                Toast.makeText(DisplayActivity.this, concert, Toast.LENGTH_LONG).show();
-//            }
-//        });
 
     }
 }

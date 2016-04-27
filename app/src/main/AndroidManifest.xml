@@ -15,8 +15,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".DisplayActivity"></activity>
+
+        <activity android:name=".WelcomeActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.epicodus.concertaid.MainActivity" />
+    </activity>
+        <activity android:name=".DisplayActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.concertaid.WelcomeActivity" />
+        </activity>
     </application>
 
 </manifest>
