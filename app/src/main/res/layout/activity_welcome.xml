@@ -20,26 +20,10 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvWelcome"
+        android:id="@+id/textViewWelcome"
         android:textSize="50sp"
-        android:layout_above="@+id/etZipCode"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="96dp" />
-
-    <EditText
-        android:textColor="#0288D1"
-        android:hint="Enter Zip Code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/etZipCode"
-        android:layout_marginBottom="141dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textColorHint="#0288D1"
-        android:textSize="40dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,4 +32,39 @@
         android:id="@+id/submitButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextArtist"
+        android:hint="Enter Artist Name"
+        android:textColorHint="#0288D1"
+        android:textStyle="bold"
+        android:textColor="#0288D1"
+        android:layout_below="@+id/textViewWelcome"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCity"
+        android:hint="Enter City"
+        android:textStyle="bold"
+        android:textColor="#0288D1"
+        android:textColorHint="#0288D1"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextState"
+        android:hint="Enter State"
+        android:textStyle="bold"
+        android:textColor="#0288D1"
+        android:textColorHint="#0288D1"
+        android:layout_below="@+id/editTextCity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp" />
+
 </RelativeLayout>

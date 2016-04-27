@@ -12,9 +12,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.tvWelcome) TextView mTVWelcome;
-    @Bind(R.id.etZipCode) EditText mEDZipCode;
-    @Bind(R.id.submitButton) Button mSubmitZipButton;
+    @Bind(R.id.textViewWelcome) TextView mTextViewWelcome;
+    @Bind(R.id.editTextCity) EditText mEditTextCity;
+    @Bind(R.id.editTextState) EditText mEditTextState;
+    @Bind(R.id.editTextArtist) EditText mEditTextArtist;
+    @Bind(R.id.submitButton) Button mSubmitButton;
 
 
     @Override
@@ -25,18 +27,22 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
-        mTVWelcome.setText("Welcome " + userName);
+        mTextViewWelcome.setText("Welcome " + userName);
 
-        mSubmitZipButton.setOnClickListener(this);
+        mSubmitButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mSubmitButton) {
-            String userZip = mEDZipCode.getText().toString();
+            String userArtist = mEditTextArtist.getText().toString();
+            String userCity = mEditTextCity.getText().toString();
+            String userState = mEditTextState.getText().toString();
 
             Intent intent = new Intent(WelcomeActivity.this, DisplayActivity.class);
-            intent.putExtra("userZip", userZip);
+            intent.putExtra("userArtist", userArtist);
+            intent.putExtra("userCity", userCity);
+            intent.putExtra("userState", userState);
             startActivity(intent);
         }
     }
