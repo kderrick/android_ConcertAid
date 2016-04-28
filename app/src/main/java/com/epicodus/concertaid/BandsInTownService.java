@@ -30,8 +30,6 @@ public class BandsInTownService {
         urlBuilder.addQueryParameter("api_version", "2.0");
         urlBuilder.addQueryParameter("format", "json");
 
-//        http://api.bandsintown.com/artists/M83/events/recommended?location=city,state&radius=25&app_id=kderrick&api_version=2.0&format=json
-//        http://api.bandsintown.com/artists/M83%2F/events%2Frecommended?location=Portland,Or&radius=25&app_id=kderrick&api_version=2.0&format=json
         String url = urlBuilder.build().toString();
         Log.d(TAG, url);
         Request request = new Request.Builder()
