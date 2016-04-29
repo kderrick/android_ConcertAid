@@ -55,13 +55,16 @@ public class BandsInTownService {
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
-                JSONObject bandsInTownJSON = new JSONObject(jsonData);
-//                Log.d(TAG, bandsInTownJSON.toString());
-                JSONArray artistsJSON = bandsInTownJSON.getJSONArray("artists");
-                for (int i = 0; i < artistsJSON.length(); i++) {
-                    JSONObject eventJSON = artistsJSON.getJSONObject(i);
+                System.out.println("You got here:" + jsonData);
+//                { represents a json object node
+//                [ represents a json array node
+                JSONArray bandsInTownJSON = new JSONArray(jsonData);
+              System.out.println("Now you got here!:" + bandsInTownJSON);
+//                JSONArray artistsJSON = bandsInTownJSON.getJSONArray("artists");
+                for (int i = 0; i < bandsInTownJSON.length(); i++) {
+                    JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
                     String name = eventJSON.getString("name");
-
+                    System.out.println("AND FINALLY!" + name);
                     Event event = new Event(name);
                     events.add(event);
 
