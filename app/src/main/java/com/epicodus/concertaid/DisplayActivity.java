@@ -64,14 +64,14 @@ public class DisplayActivity extends AppCompatActivity {
                     public void run() {
                         String[] eventNames = new String[mEvents.size()];
                         for (int i = 0; i < eventNames.length; i++ ) {
-                            eventNames[i] = mEvents.get(i).getEventArtist();
+                            eventNames[i] = mEvents.get(i).getEventTitle();
                         }
 
                         ArrayAdapter adapter = new ArrayAdapter(DisplayActivity.this, android.R.layout.simple_list_item_1, eventNames);
                         mLVDisplayConcerts.setAdapter(adapter);
 
                         for(Event event : mEvents) {
-                            Log.d(TAG, " Artist Name: " + event.getEventArtist());
+                            Log.d(TAG, " Event title: " + event.getEventTitle());
                         }
 
 

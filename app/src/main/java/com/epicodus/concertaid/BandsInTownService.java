@@ -60,12 +60,11 @@ public class BandsInTownService {
 //                [ represents a json array node
                 JSONArray bandsInTownJSON = new JSONArray(jsonData);
               System.out.println("Now you got here!:" + bandsInTownJSON);
-//                JSONArray artistsJSON = bandsInTownJSON.getJSONArray("artists");
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
-                    String name = eventJSON.getString("title");
-                    System.out.println("AND FINALLY!" + name);
-                    Event event = new Event(name);
+                    String eventTitle = eventJSON.getString("title");
+                    System.out.println("AND FINALLY!" + eventTitle);
+                    Event event = new Event(eventTitle);
                     events.add(event);
 
 

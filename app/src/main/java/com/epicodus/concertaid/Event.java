@@ -15,11 +15,11 @@ public class Event {
     private String mEventBuyTickets;
 
 
-    public Event(String artist) {
+    public Event(String title) {
 
 //        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL, String eventBuyTickets
-//        this.mEventTitle = title;
-        this.mEventArtist = artist;
+        this.mEventTitle = title;
+//        this.mEventArtist = artist;
 //        this.mEventVenue = venue;
 //        this.mEventLatitude = latitude;
 //        this.mEventLongitude = longitude;
@@ -30,13 +30,13 @@ public class Event {
     }
 
 
-//    public String getEventTitle() {
-//        return mEventTitle;
-//    }
-
-    public String getEventArtist() {
-        return mEventArtist;
+    public String getEventTitle() {
+        return mEventTitle;
     }
+
+//    public String getEventArtist() {
+//        return mEventArtist;
+////    }
 //
 //    public String getEventVenue() {
 //        return mEventVenue;
