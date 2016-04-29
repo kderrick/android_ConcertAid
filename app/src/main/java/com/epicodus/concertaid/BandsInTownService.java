@@ -63,7 +63,7 @@ public class BandsInTownService {
 //                JSONArray artistsJSON = bandsInTownJSON.getJSONArray("artists");
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
-                    String name = eventJSON.getString("name");
+                    String name = eventJSON.getString("title");
                     System.out.println("AND FINALLY!" + name);
                     Event event = new Event(name);
                     events.add(event);
