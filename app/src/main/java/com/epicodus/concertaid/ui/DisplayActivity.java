@@ -3,12 +3,15 @@ package com.epicodus.concertaid.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.concertaid.R;
+import com.epicodus.concertaid.adapters.EventListAdapter;
 import com.epicodus.concertaid.models.Event;
 import com.epicodus.concertaid.services.BandsInTownService;
 
@@ -24,8 +27,10 @@ import okhttp3.Response;
 public class DisplayActivity extends AppCompatActivity {
     public ArrayList<Event> mEvents = new ArrayList<>();
     public static final String TAG = DisplayActivity.class.getSimpleName();
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.tvDisplayZipCode) TextView mTVDisplayZipCode;
-    @Bind(R.id.lvDisplayConcerts) ListView mLVDisplayConcerts;
+    private EventListAdapter mAdapter;
+//    @Bind(R.id.lvDisplayConcerts) ListView mLVDisplayConcerts;
 //    private String[] concerts = new String[] {"Concert1", "COncert2", "Concert3", "Concert4", "Concert5", "Conert6", "Concert7"};
 
 
@@ -60,31 +65,18 @@ public class DisplayActivity extends AppCompatActivity {
                 mEvents = bandsInTownService.processResults(response);
 
                 DisplayActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String[] eventNames = new String[mEvents.size()];
-                        for (int i = 0; i < eventNames.length; i++ ) {
-                            eventNames[i] = mEvents.get(i).getEventTitle();
-                        }
 
-                        ArrayAdapter adapter = new ArrayAdapter(DisplayActivity.this, android.R.layout.simple_list_item_1, eventNames);
-                        mLVDisplayConcerts.setAdapter(adapter);
-
-                        for(Event event : mEvents) {
-                            Log.d(TAG, " Event title: " + event.getEventTitle());
-                        }
+                        @Override
+                        public void run() {
+                            mAdapter = new EventListAdapter(getApplicationContext(), mEvents);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DisplayActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
 
 
                     }
                 });
-//                try {
-//                    String jsonData = response.body().string();
-//                    if (response.isSuccessful()) {
-//                        Log.v(TAG, jsonData);
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
             }
         });
     }
