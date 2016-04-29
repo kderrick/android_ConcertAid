@@ -1,6 +1,8 @@
-package com.epicodus.concertaid;
+package com.epicodus.concertaid.services;
 
-import android.util.Log;
+import com.epicodus.concertaid.Constants;
+import com.epicodus.concertaid.ui.MainActivity;
+import com.epicodus.concertaid.models.Event;
 
 import org.json.JSONArray;
 import org.json.JSONException;

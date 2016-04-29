@@ -1,4 +1,4 @@
-package com.epicodus.concertaid;
+package com.epicodus.concertaid.models;
 
 /**
  * Created by kylederrick on 4/28/16.

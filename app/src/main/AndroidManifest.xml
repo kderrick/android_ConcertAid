@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,15 +19,15 @@
 
         </activity>
 
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".ui.WelcomeActivity">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.epicodus.concertaid.MainActivity" />
+            android:value=".ui.MainActivity" />
     </activity>
-        <activity android:name=".DisplayActivity">
+        <activity android:name=".ui.DisplayActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.concertaid.WelcomeActivity" />
+                android:value=".ui.WelcomeActivity" />
         </activity>
     </application>
 
