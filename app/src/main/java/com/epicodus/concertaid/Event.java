@@ -15,53 +15,55 @@ public class Event {
     private String mEventBuyTickets;
 
 
-    public Event(String title, String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL, String eventBuyTickets) {
-        this.mEventTitle = title;
+    public Event(String artist) {
+
+//        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL, String eventBuyTickets
+//        this.mEventTitle = title;
         this.mEventArtist = artist;
-        this.mEventVenue = venue;
-        this.mEventLatitude = latitude;
-        this.mEventLongitude = longitude;
-        this.mEventDate = date;
-        this.mEventArtistImage = artistImage;
-        this.mEventArtistURL = artistURL;
-        this.mEventBuyTickets = eventBuyTickets;
+//        this.mEventVenue = venue;
+//        this.mEventLatitude = latitude;
+//        this.mEventLongitude = longitude;
+//        this.mEventDate = date;
+//        this.mEventArtistImage = artistImage;
+//        this.mEventArtistURL = artistURL;
+//        this.mEventBuyTickets = eventBuyTickets;
     }
 
 
-    public String getEventTitle() {
-        return mEventTitle;
-    }
+//    public String getEventTitle() {
+//        return mEventTitle;
+//    }
 
     public String getEventArtist() {
         return mEventArtist;
     }
-
-    public String getEventVenue() {
-        return mEventVenue;
-    }
-
-    public double getEventLatitude() {
-        return mEventLatitude;
-    }
-
-    public double getEventLongitude() {
-        return mEventLongitude;
-    }
-
-    public String getEventDate() {
-        return mEventDate;
-    }
-
-    public String getEventArtistImage() {
-        return mEventArtistImage;
-    }
-    public String getEventArtistURL() {
-        return mEventArtistURL;
-    }
-
-    public String getEventBuyTickets() {
-        return mEventBuyTickets;
-    }
+//
+//    public String getEventVenue() {
+//        return mEventVenue;
+//    }
+//
+//    public double getEventLatitude() {
+//        return mEventLatitude;
+//    }
+//
+//    public double getEventLongitude() {
+//        return mEventLongitude;
+//    }
+//
+//    public String getEventDate() {
+//        return mEventDate;
+//    }
+//
+//    public String getEventArtistImage() {
+//        return mEventArtistImage;
+//    }
+//    public String getEventArtistURL() {
+//        return mEventArtistURL;
+//    }
+//
+//    public String getEventBuyTickets() {
+//        return mEventBuyTickets;
+//    }
 
 
 }
