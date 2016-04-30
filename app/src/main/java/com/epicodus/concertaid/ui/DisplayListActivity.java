@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.concertaid.R;
@@ -24,9 +21,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DisplayActivity extends AppCompatActivity {
+public class DisplayListActivity extends AppCompatActivity {
     public ArrayList<Event> mEvents = new ArrayList<>();
-    public static final String TAG = DisplayActivity.class.getSimpleName();
+    public static final String TAG = DisplayListActivity.class.getSimpleName();
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.tvDisplayZipCode) TextView mTVDisplayZipCode;
     private EventListAdapter mAdapter;
@@ -64,13 +61,13 @@ public class DisplayActivity extends AppCompatActivity {
 
                 mEvents = bandsInTownService.processResults(response);
 
-                DisplayActivity.this.runOnUiThread(new Runnable() {
+                DisplayListActivity.this.runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
                             mAdapter = new EventListAdapter(getApplicationContext(), mEvents);
                             mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DisplayActivity.this);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DisplayListActivity.this);
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
 

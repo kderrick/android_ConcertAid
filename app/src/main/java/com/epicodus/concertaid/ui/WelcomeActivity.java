@@ -41,7 +41,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             String userCity = mEditTextCity.getText().toString();
             String userState = mEditTextState.getText().toString();
 
-            Intent intent = new Intent(WelcomeActivity.this, DisplayActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this, DisplayListActivity.class);
             intent.putExtra("userArtist", userArtist);
             intent.putExtra("userCity", userCity);
             intent.putExtra("userState", userState);
