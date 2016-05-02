@@ -1,8 +1,10 @@
 package com.epicodus.concertaid.models;
 
-/**
- * Created by kylederrick on 4/28/16.
- */
+import org.parceler.Parcel;
+
+
+
+@Parcel
 public class Event {
     private String mEventTitle;
     private String mEventArtist;
@@ -13,6 +15,8 @@ public class Event {
     private String mEventArtistImage;
     private String mEventArtistURL;
     private String mEventBuyTickets;
+
+    public Event() {};
 
 
     public Event(String title) {
