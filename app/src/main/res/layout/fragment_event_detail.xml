@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="More details!"
+                    android:text="Facebook RSVP implicit intent will go here"
                     android:id="@+id/websiteTextView"
                     android:drawableLeft="@drawable/ic_event_black_24dp"
                     android:drawablePadding="4dp"

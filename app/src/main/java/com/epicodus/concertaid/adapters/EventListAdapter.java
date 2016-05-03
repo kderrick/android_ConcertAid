@@ -52,7 +52,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     public class EventViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.eventImageView) ImageView mEventImageView;
         @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
-        @Bind(R.id.detailsTextView) TextView mDetailsTextView;
+//        @Bind(R.id.detailsTextView) TextView mDetailsTextView;
         private Context mContext;
 
         public EventViewHolder(View itemView) {
@@ -72,7 +72,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         }
         public void bindEvent(Event event) {
             mEventNameTextView.setText(event.getEventTitle());
-          mDetailsTextView.setText(event.getEventTitle());
+//          mDetailsTextView.setText(event.getEventTitle());
         }
     }
 }
