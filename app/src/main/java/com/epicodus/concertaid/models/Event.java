@@ -7,6 +7,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Event {
     private String mEventTitle;
+    private String mEventFacebookRSVP;
     private String mEventArtist;
     private String mEventVenue;
     private double mEventLatitude;
@@ -19,10 +20,11 @@ public class Event {
     public Event() {};
 
 
-    public Event(String title) {
+    public Event(String title, String facebookRSVP) {
 
 //        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL, String eventBuyTickets
         this.mEventTitle = title;
+        this.mEventFacebookRSVP = facebookRSVP;
 //        this.mEventArtist = artist;
 //        this.mEventVenue = venue;
 //        this.mEventLatitude = latitude;
@@ -37,6 +39,8 @@ public class Event {
     public String getEventTitle() {
         return mEventTitle;
     }
+
+    public String getmEventFacebookRSVP() { return mEventFacebookRSVP;}
 
 //    public String getEventArtist() {
 //        return mEventArtist;

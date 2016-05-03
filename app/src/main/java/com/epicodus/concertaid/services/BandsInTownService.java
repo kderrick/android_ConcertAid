@@ -65,8 +65,9 @@ public class BandsInTownService {
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
                     String eventTitle = eventJSON.getString("title");
-                    System.out.println("AND FINALLY!" + eventTitle);
-                    Event event = new Event(eventTitle);
+                    String eventFacebookRSVP = eventJSON.getString("facebook_rsvp_url");
+                    System.out.println("AND FINALLY!" + eventTitle + ":" + eventFacebookRSVP );
+                    Event event = new Event(eventTitle, eventFacebookRSVP);
                     events.add(event);
 
 
