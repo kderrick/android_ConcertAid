@@ -27,15 +27,5 @@
             android:text="Event Name"
             android:textColor="@color/colorPrimary"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Details about the event"
-            android:id="@+id/detailsTextView"
-            android:layout_below="@+id/eventNameTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="italic"/>
-
     </LinearLayout>
 </LinearLayout>
