@@ -1,6 +1,8 @@
 package com.epicodus.concertaid.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,7 +22,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventDetailFragment extends Fragment {
+public class EventDetailFragment extends Fragment implements View.OnClickListener {
 
     @Bind(R.id.eventImageView) ImageView mEventImageView;
     @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
@@ -52,9 +54,17 @@ public class EventDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
         ButterKnife.bind(this,view);
 
+        mWebsiteTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
+        mWebsiteTextView.setText(mEvent.getmEventFacebookRSVP());
         // Inflate the layout for this fragment
         return view;
     }
-
+    @Override
+    public void onClick(View v) {
+        if (v == mWebsiteTextView) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getmEventFacebookRSVP()));
+            startActivity(webIntent);
+        }
+    }
 }
