@@ -17,6 +17,7 @@ public class Constants {
 
     public static final String PREFERENCES_CITY_KEY = "city";
     public static final String PREFERENCES_STATE_KEY = "state";
+    public static final String FIREBASE_URL = BuildConfig.FIREBASE_ROOT_URL;
 
 
 

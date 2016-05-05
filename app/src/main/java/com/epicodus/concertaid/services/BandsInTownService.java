@@ -35,13 +35,12 @@ public class BandsInTownService {
         urlBuilder.addPathSegment("events");
         urlBuilder.addPathSegment("recommended");
         urlBuilder.addQueryParameter("location", city + "," + state);
-        urlBuilder.addQueryParameter("radius", "25");
+        urlBuilder.addQueryParameter("radius", "50");
         urlBuilder.addQueryParameter("app_id", Constants.BANDS_IN_TOWN_ID);
         urlBuilder.addQueryParameter("api_version", "2.0");
         urlBuilder.addQueryParameter("format", "json");
 
         String url = urlBuilder.build().toString();
-//        Log.d(TAG, url);
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -57,11 +56,11 @@ public class BandsInTownService {
         try {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
-                System.out.println("You got here:" + jsonData);
+//                System.out.println("You got here:" + jsonData);
 //                { represents a json object node
 //                [ represents a json array node
                 JSONArray bandsInTownJSON = new JSONArray(jsonData);
-              System.out.println("Now you got here!:" + bandsInTownJSON);
+//              System.out.println("Now you got here!:" + bandsInTownJSON);
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
                     String eventTitle = eventJSON.getString("title");
