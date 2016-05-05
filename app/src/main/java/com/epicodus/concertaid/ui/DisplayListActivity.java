@@ -1,12 +1,16 @@
 package com.epicodus.concertaid.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.adapters.EventListAdapter;
 import com.epicodus.concertaid.models.Event;
@@ -27,8 +31,9 @@ public class DisplayListActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.tvDisplayZipCode) TextView mTVDisplayZipCode;
     private EventListAdapter mAdapter;
-//    @Bind(R.id.lvDisplayConcerts) ListView mLVDisplayConcerts;
-//    private String[] concerts = new String[] {"Concert1", "COncert2", "Concert3", "Concert4", "Concert5", "Conert6", "Concert7"};
+    private SharedPreferences mSharedPreferences;
+    private String mRecentCity;
+    private String mRecentState;
 
 
     @Override
@@ -39,11 +44,16 @@ public class DisplayListActivity extends AppCompatActivity {
 
 
 
+
+
         Intent intent = getIntent();
         String userArtist = intent.getStringExtra("userArtist");
-        String userCity = intent.getStringExtra("userCity");
-        String userState = intent.getStringExtra("userState");
-        getEvents(userArtist, userCity, userState);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentCity = mSharedPreferences.getString(Constants.PREFERENCES_CITY_KEY, null);
+        mRecentState = mSharedPreferences.getString(Constants.PREFERENCES_STATE_KEY, null);
+        if ((mRecentCity != null) && (mRecentState !=null) ){
+            getEvents(userArtist, mRecentCity, mRecentState );
+        }
     }
 
     private void getEvents(String userArtist, String userCity, String userState) {

@@ -15,6 +15,9 @@ public class Constants {
     public static final String BANDS_IN_TOWN_FILLER3_QUERY_PARAMETER = "&radius=10&app_id=";
     public static final String BANDS_IN_TOWN_FILLER4_QUERY_PARAMETER = "&api_version=2.0&format=json";
 
+    public static final String PREFERENCES_CITY_KEY = "city";
+    public static final String PREFERENCES_STATE_KEY = "state";
+
 
 
 }
