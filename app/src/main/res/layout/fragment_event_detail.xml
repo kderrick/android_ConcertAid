@@ -108,7 +108,7 @@
                 android:id="@+id/saveEventButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
-                android:textColor="@color/colorTextIcons"
+                android:textColor="#0288D1"
                 android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>

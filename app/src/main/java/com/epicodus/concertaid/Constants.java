@@ -18,8 +18,8 @@ public class Constants {
     public static final String PREFERENCES_CITY_KEY = "city";
     public static final String PREFERENCES_STATE_KEY = "state";
     public static final String FIREBASE_URL = BuildConfig.FIREBASE_ROOT_URL;
-    public static final String FIREBASE_LOCATION_EVENTS = "events";
-    public static final String FIREBASE_URL_RESTAURANTS = FIREBASE_URL + "/" + FIREBASE_LOCATION_EVENTS;
+    public static final String FIREBASE_EVENTS = "events";
+    public static final String FIREBASE_URL_EVENTS = FIREBASE_URL + "/" + FIREBASE_EVENTS;
 
 
 
