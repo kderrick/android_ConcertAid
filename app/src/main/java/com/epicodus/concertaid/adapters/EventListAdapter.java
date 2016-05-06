@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Guest on 4/29/16.
  */
-public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder> {
+public class EventListAdapter extends RecyclerView.Adapter<EventViewHolder> {
     private ArrayList<Event> mEvents = new ArrayList<>();
     private Context mContext;
 
@@ -33,14 +33,14 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     }
 
     @Override
-    public EventListAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
-        EventViewHolder viewHolder = new EventViewHolder(view);
+        EventViewHolder viewHolder = new EventViewHolder(view, mEvents);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(EventListAdapter.EventViewHolder holder, int position) {
+    public void onBindViewHolder(EventViewHolder holder, int position) {
         holder.bindEvent(mEvents.get(position));
     }
 
@@ -49,30 +49,4 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         return mEvents.size();
     }
 
-    public class EventViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.eventImageView) ImageView mEventImageView;
-        @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
-//        @Bind(R.id.detailsTextView) TextView mDetailsTextView;
-        private Context mContext;
-
-        public EventViewHolder(View itemView) {
-            super(itemView);
-            mContext = itemView.getContext();
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int itemPosition = getLayoutPosition();
-                    Intent intent = new Intent(mContext, EventDetailActivity.class);
-                    intent.putExtra("position", itemPosition + "");
-                    intent.putExtra("events", Parcels.wrap(mEvents));
-                    mContext.startActivity(intent);
-                }
-            });
-        }
-        public void bindEvent(Event event) {
-            mEventNameTextView.setText(event.getEventTitle());
-//          mDetailsTextView.setText(event.getEventTitle());
-        }
-    }
 }
