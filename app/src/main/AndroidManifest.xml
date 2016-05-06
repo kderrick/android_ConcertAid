@@ -30,7 +30,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.WelcomeActivity" />
         </activity>
-        <activity android:name=".ui.EventDetailActivity"></activity>
+        <activity android:name=".ui.EventDetailActivity" />
+        <activity android:name=".ui.SavedEventListActivity"></activity>
     </application>
 
 </manifest>

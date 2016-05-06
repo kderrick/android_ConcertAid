@@ -22,6 +22,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.editTextState) EditText mEditTextState;
     @Bind(R.id.editTextArtist) EditText mEditTextArtist;
     @Bind(R.id.submitButton) Button mSubmitButton;
+    @Bind(R.id.savedEventsButton) Button mSavedEventsButton;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
@@ -31,6 +32,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
+
+        mSavedEventsButton.setOnClickListener(this);
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
@@ -54,6 +57,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
             Intent intent = new Intent(WelcomeActivity.this, DisplayListActivity.class);
             intent.putExtra("userArtist", userArtist);
+            startActivity(intent);
+        }
+
+        if (v == mSavedEventsButton) {
+            Intent intent = new Intent(WelcomeActivity.this, SavedEventListActivity.class);
             startActivity(intent);
         }
     }

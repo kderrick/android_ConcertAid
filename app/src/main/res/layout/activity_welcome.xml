@@ -26,12 +26,27 @@
         android:layout_marginBottom="96dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/submitButton"
+        android:textColor="#0288D1"
+        android:visibility="visible"
+        android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Saved Events"
+        android:id="@+id/savedEventsButton"
+        android:background="@color/colorAccent"
+        android:textColor="#0288D1"
+        android:visibility="visible"
+        android:layout_above="@+id/submitButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
