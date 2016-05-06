@@ -6,71 +6,66 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Event {
-    private String mEventTitle;
-    private String mEventFacebookRSVP;
-    private String mEventArtist;
-    private String mEventVenue;
-    private double mEventLatitude;
-    private double mEventLongitude;
-    private String mEventDate;
-    private String mEventArtistImage;
-    private String mEventArtistURL;
-    private String mEventBuyTickets;
+    private String eventTitle;
+    private String eventFacebookRSVP;
+    private String eventArtist;
+    private String eventVenue;
+    private double eventLatitude;
+    private double eventLongitude;
+    private String eventDate;
+    private String eventArtistImage;
+    private String eventArtistURL;
 
     public Event() {};
 
 
     public Event(String title, String facebookRSVP) {
 
-//        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL, String eventBuyTickets
-        this.mEventTitle = title;
-        this.mEventFacebookRSVP = facebookRSVP;
-//        this.mEventArtist = artist;
-//        this.mEventVenue = venue;
-//        this.mEventLatitude = latitude;
-//        this.mEventLongitude = longitude;
-//        this.mEventDate = date;
-//        this.mEventArtistImage = artistImage;
-//        this.mEventArtistURL = artistURL;
-//        this.mEventBuyTickets = eventBuyTickets;
+//        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL
+
+        this.eventTitle = title;
+        this.eventFacebookRSVP = facebookRSVP;
+//        this.eventArtist = artist;
+//        this.eventVenue = venue;
+//        this.eventLatitude = latitude;
+//        this.eventLongitude = longitude;
+//        this.eventDate = date;
+//        this.eventArtistImage = artistImage;
+//        this.eventArtistURL = artistURL;
     }
 
 
     public String getEventTitle() {
-        return mEventTitle;
+        return eventTitle;
     }
 
-    public String getmEventFacebookRSVP() { return mEventFacebookRSVP;}
+    public String getEventFacebookRSVP() { return eventFacebookRSVP;}
 
 //    public String getEventArtist() {
-//        return mEventArtist;
-////    }
+//        return eventArtist;
+//    }
 //
 //    public String getEventVenue() {
-//        return mEventVenue;
+//        return eventVenue;
 //    }
 //
 //    public double getEventLatitude() {
-//        return mEventLatitude;
+//        return eventLatitude;
 //    }
 //
 //    public double getEventLongitude() {
-//        return mEventLongitude;
+//        return eventLongitude;
 //    }
 //
 //    public String getEventDate() {
-//        return mEventDate;
+//        return eventDate;
 //    }
 //
 //    public String getEventArtistImage() {
-//        return mEventArtistImage;
+//        return eventArtistImage;
 //    }
 //    public String getEventArtistURL() {
-//        return mEventArtistURL;
-//    }
-//
-//    public String getEventBuyTickets() {
-//        return mEventBuyTickets;
+//        return eventArtistURL;
 //    }
 
 
