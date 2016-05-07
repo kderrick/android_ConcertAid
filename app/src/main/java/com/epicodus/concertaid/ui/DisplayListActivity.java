@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
+import android.support.v7.widget.SearchView;
 
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
@@ -41,9 +42,6 @@ public class DisplayListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
         ButterKnife.bind(this);
-
-
-
 
 
         Intent intent = getIntent();
