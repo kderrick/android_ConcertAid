@@ -31,7 +31,8 @@
                 android:value=".ui.WelcomeActivity" />
         </activity>
         <activity android:name=".ui.EventDetailActivity" />
-        <activity android:name=".ui.SavedEventListActivity"></activity>
+        <activity android:name=".ui.SavedEventListActivity" />
+        <activity android:name=".ui.CreateAccountActivity"></activity>
     </application>
 
 </manifest>
