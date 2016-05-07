@@ -21,6 +21,11 @@ public class Constants {
     public static final String FIREBASE_EVENTS = "events";
     public static final String FIREBASE_URL_EVENTS = FIREBASE_URL + "/" + FIREBASE_EVENTS;
 
+    public static final String FIREBASE_PROPERTY_USERS = "users";
+    public static final String FIREBASE_PROPERTY_EMAIL = "email";
+    public static final String KEY_UID = "UID";
+    public static final String FIREBASE_URL_USERS = FIREBASE_URL + "/" + FIREBASE_PROPERTY_USERS;
+
 
 
 }
