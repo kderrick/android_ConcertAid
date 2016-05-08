@@ -64,7 +64,7 @@
             android:text="Log in"
             android:background="@color/colorAccent"
             android:layout_marginTop="15dp"
-            android:textColor="@color/colorTextIcons" />
+            android:textColor="#0288D1" />
 
         <TextView
             android:layout_width="wrap_content"
