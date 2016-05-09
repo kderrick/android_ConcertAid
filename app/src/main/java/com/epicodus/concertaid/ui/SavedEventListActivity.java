@@ -1,5 +1,7 @@
 package com.epicodus.concertaid.ui;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +22,8 @@ public class SavedEventListActivity extends AppCompatActivity {
     private Query mQuery;
     private Firebase mFirebaseEventsRef;
     private FirebaseEventListAdapter mAdapter;
+    private SharedPreferences mSharedPreferences;
+
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
@@ -28,6 +32,7 @@ public class SavedEventListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
         ButterKnife.bind(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         mFirebaseEventsRef = new Firebase(Constants.FIREBASE_URL_EVENTS);
 
@@ -36,7 +41,8 @@ public class SavedEventListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseQuery() {
-        String event = mFirebaseEventsRef.toString();
+        String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+        String event = mFirebaseEventsRef.child(userUid).toString();
         mQuery = new Firebase(event);
     }
 

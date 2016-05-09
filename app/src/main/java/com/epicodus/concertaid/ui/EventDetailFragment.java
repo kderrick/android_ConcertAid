@@ -2,8 +2,10 @@ package com.epicodus.concertaid.ui;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.phoneTextView) TextView mPhoneTextView;
     @Bind(R.id.addressTextView) TextView mAddressTextView;
     @Bind(R.id.saveEventButton) Button mSaveEventButton;
+    private SharedPreferences mSharedPreferences;
 
     private Event mEvent;
 
@@ -51,6 +54,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mEvent = Parcels.unwrap(getArguments().getParcelable("event"));
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
     }
 
 
@@ -73,8 +77,12 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
             startActivity(webIntent);
         }
         if (v == mSaveEventButton) {
-            Firebase ref = new Firebase(Constants.FIREBASE_URL_EVENTS);
-            ref.push().setValue(mEvent);
+            String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+            Firebase userEventsFirebaseRef = new Firebase(Constants.FIREBASE_URL_EVENTS).child(userUid);
+            Firebase pushRef = userEventsFirebaseRef.push();
+            String eventPushId = pushRef.getKey();
+            mEvent.setPushId(eventPushId);
+            pushRef.setValue(mEvent);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
          }
     }
