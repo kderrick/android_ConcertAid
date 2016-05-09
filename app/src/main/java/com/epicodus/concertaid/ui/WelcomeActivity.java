@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,12 +16,17 @@ import android.widget.TextView;
 
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
+import com.epicodus.concertaid.models.User;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = WelcomeActivity.class.getSimpleName();
     @Bind(R.id.textViewWelcome) TextView mTextViewWelcome;
     @Bind(R.id.editTextCity) EditText mEditTextCity;
     @Bind(R.id.editTextState) EditText mEditTextState;
@@ -30,6 +36,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private Firebase mFirebaseRef;
+    private ValueEventListener mUserRefListener;
+    private Firebase mUserRef;
+    private String mUId;
 
 
     @Override
@@ -39,6 +48,23 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         ButterKnife.bind(this);
 
         mSavedEventsButton.setOnClickListener(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mUId = mSharedPreferences.getString(Constants.KEY_UID, null);
+        mUserRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mUId);
+
+        mUserRefListener = mUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                mTextViewWelcome.setText("Welcome, " + user.getName());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Log.d(TAG, "Read failed");
+            }
+        });
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
