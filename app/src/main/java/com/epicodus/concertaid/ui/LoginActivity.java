@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
@@ -97,6 +98,10 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                 }
             }
         });
+    }
+
+    private void showErrorToast(String message) {
+        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
 }
