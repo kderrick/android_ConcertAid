@@ -15,6 +15,7 @@ public class Event {
     private String eventDate;
     private String eventArtistImage;
     private String eventArtistURL;
+    private String pushId;
 
     public Event() {};
 
@@ -67,6 +68,14 @@ public class Event {
 //    public String getEventArtistURL() {
 //        return eventArtistURL;
 //    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 
 
 }
