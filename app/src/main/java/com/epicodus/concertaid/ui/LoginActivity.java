@@ -1,5 +1,6 @@
 package com.epicodus.concertaid.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,10 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         mSharedPreferencesEditor = mSharedPreferences.edit();
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mPasswordLoginButton.setOnClickListener(this);
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Database...");
+        mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
@@ -69,9 +75,13 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         if (password.equals("")) {
             mPasswordEditText.setError("Password cannot be blank");
         }
+
+        mAuthProgressDialog.show();
+
         mFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
+                mAuthProgressDialog.dismiss();
                 if (authData != null) {
                     String userUid = authData.getUid();
                     mSharedPreferencesEditor.putString(Constants.KEY_UID, userUid).apply();
@@ -83,6 +93,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
             }
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
+                mAuthProgressDialog.dismiss();
                 switch (firebaseError.getCode()) {
                     case FirebaseError.INVALID_EMAIL:
                     case FirebaseError.USER_DOES_NOT_EXIST:
