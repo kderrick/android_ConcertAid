@@ -60,12 +60,26 @@ public class BandsInTownService {
 //                { represents a json object node
 //                [ represents a json array node
                 JSONArray bandsInTownJSON = new JSONArray(jsonData);
-//              System.out.println("Now you got here!:" + bandsInTownJSON);
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
                     String eventTitle = eventJSON.getString("title");
+
+                    ArrayList<String> eventImageURLArray = new ArrayList<>();
+                    JSONArray eventArtistsArray = eventJSON.getJSONArray("artists");
+                    System.out.println("LOOK" + eventArtistsArray);
+                    for (int y = 0; y < eventArtistsArray.length(); y++) {
+                        JSONObject eventArtist = eventArtistsArray.getJSONObject(y);
+                        String eventThumbURL = eventArtist.getString("thumb_url");
+//                        System.out.println("HELLO KYLE" + eventThumbURL);
+                        eventImageURLArray.add(eventArtistsArray.get(y).toString());
+                    }
+
+//                    System.out.println("TEST" + eventImageURLArray);
+
+
+
                     String eventFacebookRSVP = eventJSON.getString("facebook_rsvp_url");
-                    System.out.println("AND FINALLY!" + eventTitle + ":" + eventFacebookRSVP );
+//                    System.out.println("CAN THIS PRINT HERE?" + eventTitle + ":" + eventFacebookRSVP );
                     Event event = new Event(eventTitle, eventFacebookRSVP);
                     events.add(event);
 

@@ -53,18 +53,18 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         mUId = mSharedPreferences.getString(Constants.KEY_UID, null);
         mUserRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mUId);
 
-        mUserRefListener = mUserRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                mTextViewWelcome.setText("Welcome, " + user.getName());
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Log.d(TAG, "Read failed");
-            }
-        });
+//        mUserRefListener = mUserRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                User user = dataSnapshot.getValue(User.class);
+//                mTextViewWelcome.setText("Welcome, " + user.getName());
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//                Log.d(TAG, "Read failed");
+//            }
+//        });
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
