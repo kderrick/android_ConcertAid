@@ -23,15 +23,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity  implements View.OnClickListener {
-    @Bind(R.id.registerTextView)
-    TextView mRegisterTextView;
+    @Bind(R.id.registerTextView) TextView mRegisterTextView;
     public static final String TAG = LoginActivity.class.getSimpleName();
-    @Bind(R.id.passwordLoginButton)
-    Button mPasswordLoginButton;
-    @Bind(R.id.emailEditText)
-    EditText mEmailEditText;
-    @Bind(R.id.passwordEditText)
-    EditText mPasswordEditText;
+    @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
+    @Bind(R.id.emailEditText) EditText mEmailEditText;
+    @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
@@ -51,6 +47,10 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         mAuthProgressDialog.setTitle("Loading...");
         mAuthProgressDialog.setMessage("Authenticating with Database...");
         mAuthProgressDialog.setCancelable(false);
+        String signupEmail = mSharedPreferences.getString(Constants.KEY_USER_EMAIL, null);
+        if (signupEmail != null) {
+            mEmailEditText.setText(signupEmail);
+        }
     }
 
     @Override
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     }
 
     public void loginWithPassword() {
-        String email = mEmailEditText.getText().toString();
+        final String email = mEmailEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();
 
         if (email.equals("")) {
@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         mFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
+                mSharedPreferencesEditor.putString(Constants.KEY_USER_EMAIL, email).apply();
                 mAuthProgressDialog.dismiss();
                 if (authData != null) {
                     String userUid = authData.getUid();
