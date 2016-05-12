@@ -15,20 +15,22 @@
         android:src="@drawable/background1" />
 
     <TextView
+        android:gravity="center"
         android:textColor="#0288D1"
         android:textColorHint="#0288D1"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/textViewWelcome"
         android:textSize="50sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="96dp" />
+        android:layout_alignBottom="@+id/editTextCity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="Submit Search"
         android:id="@+id/submitButton"
         android:textColor="#0288D1"
         android:visibility="visible"
@@ -44,7 +46,7 @@
         android:background="@color/colorAccent"
         android:textColor="#0288D1"
         android:visibility="visible"
-        android:layout_above="@+id/submitButton"
+        android:layout="@+id/submitButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -67,6 +69,7 @@
         android:textStyle="bold"
         android:textColor="#0288D1"
         android:textColorHint="#0288D1"
+        android:layout_below="@+id/editTe"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
