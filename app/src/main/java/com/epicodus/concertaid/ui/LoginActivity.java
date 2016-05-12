@@ -3,6 +3,7 @@ package com.epicodus.concertaid.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity  implements View.OnClickListener {
+    @Bind(R.id.textView4) TextView mTextView4;
     @Bind(R.id.registerTextView) TextView mRegisterTextView;
     public static final String TAG = LoginActivity.class.getSimpleName();
     @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
@@ -33,8 +35,12 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
     private SharedPreferences.Editor mSharedPreferencesEditor;
     private ProgressDialog mAuthProgressDialog;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/font1.ttf"); mTextView4.setTypeface(tf);
+//        This breaks app?
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);

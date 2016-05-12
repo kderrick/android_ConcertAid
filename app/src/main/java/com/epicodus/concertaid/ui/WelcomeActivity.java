@@ -2,6 +2,7 @@ package com.epicodus.concertaid.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private String mUId;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +80,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         mSubmitButton.setOnClickListener(this);
 
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
+
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/font1.ttf");
+        mTextViewWelcome.setTypeface(tf);
     }
 
     @Override
