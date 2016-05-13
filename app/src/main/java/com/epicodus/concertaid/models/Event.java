@@ -2,30 +2,32 @@ package com.epicodus.concertaid.models;
 
 import org.parceler.Parcel;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Parcel
 public class Event {
-    private String eventTitle;
-    private String eventFacebookRSVP;
-    private String eventArtist;
-    private String eventVenue;
-    private double eventLatitude;
-    private double eventLongitude;
-    private String eventDate;
-    private String eventArtistImage;
-    private String eventArtistURL;
-    private String pushId;
+    String eventTitle;
+    String eventFacebookRSVP;
+    List<String> artistArray = new ArrayList<>();
+    String eventArtist;
+    String eventVenue;
+    String eventDate;
+    String eventArtistImage;
+    String eventArtistURL;
+    String pushId;
 
     public Event() {};
 
 
-    public Event(String title, String facebookRSVP) {
+    public Event(String title, String facebookRSVP, ArrayList<String> artistArray) {
 
 //        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL
 
         this.eventTitle = title;
         this.eventFacebookRSVP = facebookRSVP;
+        this.artistArray = artistArray;
 //        this.eventArtist = artist;
 //        this.eventVenue = venue;
 //        this.eventLatitude = latitude;
@@ -41,6 +43,10 @@ public class Event {
     }
 
     public String getEventFacebookRSVP() { return eventFacebookRSVP;}
+
+    public List<String> getArtistArray() {
+        return artistArray;
+    }
 
 //    public String getEventArtist() {
 //        return eventArtist;

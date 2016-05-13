@@ -81,7 +81,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
 
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/font1.ttf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
         mTextViewWelcome.setTypeface(tf);
     }
 

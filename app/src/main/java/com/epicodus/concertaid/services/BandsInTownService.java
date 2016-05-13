@@ -62,21 +62,21 @@ public class BandsInTownService {
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
                     String eventTitle = eventJSON.getString("title");
+                    String formattedDateTime = eventJSON.getString("formatted_datetime");
+                    String eventFacebookRSVP = eventJSON.getString("facebook_rsvp_url");
+                    String eventCityState = eventJSON.getString("formatted_location");
 
                     ArrayList<String> eventImageURLArray = new ArrayList<>();
                     JSONArray eventArtistsArray = eventJSON.getJSONArray("artists");
-//                    System.out.println("LOOK" + eventArtistsArray);
                     for (int y = 0; y < eventArtistsArray.length(); y++) {
                         JSONObject eventArtist = eventArtistsArray.getJSONObject(y);
-                        String eventThumbURL = eventArtist.getString("thumb_url");
-//                        System.out.println("HELLO KYLE" + eventThumbURL);
                         eventImageURLArray.add(eventArtistsArray.get(y).toString());
                     }
-                System.out.println("This is outside the inner loop " + eventImageURLArray);
+//                System.out.println("This is outside the inner loop " + eventImageURLArray);
 
 
-                    String eventFacebookRSVP = eventJSON.getString("facebook_rsvp_url");
-                    Event event = new Event(eventTitle, eventFacebookRSVP);
+
+                    Event event = new Event(eventTitle, eventFacebookRSVP, eventImageURLArray);
                     events.add(event);
 
 
