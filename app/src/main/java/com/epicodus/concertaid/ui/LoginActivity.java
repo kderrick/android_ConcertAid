@@ -39,8 +39,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/font1.ttf"); mTextView4.setTypeface(tf);
-//        This breaks app?
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
@@ -57,6 +56,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         if (signupEmail != null) {
             mEmailEditText.setText(signupEmail);
         }
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
+        mTextView4.setTypeface(tf);
     }
 
     @Override

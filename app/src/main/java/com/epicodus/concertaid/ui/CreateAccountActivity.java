@@ -2,6 +2,7 @@ package com.epicodus.concertaid.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import butterknife.ButterKnife;
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = CreateAccountActivity.class.getSimpleName();
+    @Bind(R.id.textView4) TextView mTextView4;
     @Bind(R.id.createUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
@@ -45,14 +47,22 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mCreateUserButton.setOnClickListener(this);
+        mLoginTextView.setOnClickListener(this);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mSharedPreferencesEditor = mSharedPreferences.edit();
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
+        mTextView4.setTypeface(tf);
     }
 
     @Override
     public void onClick(View view) {
         if (view == mCreateUserButton) {
             createNewUser();
+        }
+        if (view == mLoginTextView) {
+            Intent loginIntent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+                    startActivity(loginIntent);
+            finish();
         }
     }
     public void createNewUser() {
