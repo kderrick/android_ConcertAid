@@ -77,8 +77,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="More info here!"
-                    android:id="@+id/phoneTextView"
+                    android:text="Artist Array here?"
+                    android:id="@+id/testTextView"
                     android:drawableLeft="@drawable/ic_event_black_24dp"
                     android:drawablePadding="4dp"
                     android:textSize="15sp"

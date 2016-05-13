@@ -33,7 +33,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.eventImageView) ImageView mEventImageView;
     @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
-    @Bind(R.id.phoneTextView) TextView mPhoneTextView;
+    @Bind(R.id.testTextView) TextView mTestTextView;
     @Bind(R.id.addressTextView) TextView mAddressTextView;
     @Bind(R.id.saveEventButton) Button mSaveEventButton;
     private SharedPreferences mSharedPreferences;
@@ -67,6 +67,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mWebsiteTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
         mWebsiteTextView.setText(mEvent.getEventFacebookRSVP());
+        mTestTextView.setText(mEvent.getArtistArray().get(0));
         // Inflate the layout for this fragment
         return view;
     }
