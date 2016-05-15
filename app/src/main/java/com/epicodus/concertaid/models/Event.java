@@ -44,8 +44,8 @@ public class Event {
 
     public String getEventFacebookRSVP() { return eventFacebookRSVP;}
 
-    public List<String> getArtistArray() {
-        return artistArray;
+    public String getArtistArray() {
+        return artistArray.get(0);
     }
 
 //    public String getEventArtist() {

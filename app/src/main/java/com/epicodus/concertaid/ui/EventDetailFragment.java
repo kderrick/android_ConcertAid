@@ -68,7 +68,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mWebsiteTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
         mWebsiteTextView.setText("Click here to Get Tickets");
-        mTestTextView.setText(mEvent.getArtistArray().get(0));
+        mTestTextView.setText(mEvent.getArtistArray());
         // Inflate the layout for this fragment
         return view;
     }
