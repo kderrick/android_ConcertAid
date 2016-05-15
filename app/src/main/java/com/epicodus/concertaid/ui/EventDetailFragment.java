@@ -21,6 +21,7 @@ import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.models.Event;
 import com.firebase.client.Firebase;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -68,6 +69,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mWebsiteTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
         mWebsiteTextView.setText("Click here to Get Tickets");
+        Picasso.with(view.getContext()).load(mEvent.getEventImage()).into(mEventImageView);
 //        mTestTextView.setText(mEvent.getArtistArray());
         // Inflate the layout for this fragment
         return view;
