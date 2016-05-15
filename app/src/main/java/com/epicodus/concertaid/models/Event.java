@@ -10,7 +10,6 @@ import java.util.List;
 public class Event {
     String eventTitle;
     String eventFacebookRSVP;
-    List<String> artistArray = new ArrayList<>();
     String eventArtist;
     String eventVenue;
     String eventDate;
@@ -21,13 +20,13 @@ public class Event {
     public Event() {};
 
 
-    public Event(String title, String facebookRSVP, ArrayList<String> artistArray) {
+    public Event(String title, String facebookRSVP, String eventArtistImage) {
 
 //        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL
 
         this.eventTitle = title;
         this.eventFacebookRSVP = facebookRSVP;
-        this.artistArray = artistArray;
+        this.eventArtistImage = eventArtistImage;
 //        this.eventArtist = artist;
 //        this.eventVenue = venue;
 //        this.eventLatitude = latitude;
@@ -44,9 +43,8 @@ public class Event {
 
     public String getEventFacebookRSVP() { return eventFacebookRSVP;}
 
-    public String getArtistArray() {
-        return artistArray.get(0);
-    }
+    public String getEventImage() { return eventArtistImage;}
+
 
 //    public String getEventArtist() {
 //        return eventArtist;

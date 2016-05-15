@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.models.Event;
 import com.epicodus.concertaid.ui.EventDetailActivity;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -44,6 +45,7 @@ import butterknife.ButterKnife;
         }
         public void bindEvent(Event event) {
             mEventNameTextView.setText(event.getEventTitle());
+            Picasso.with(mContext).load(event.getEventImage()).into(mEventImageView);
 //          mDetailsTextView.setText(event.getEventTitle());
         }
     }

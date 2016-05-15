@@ -68,16 +68,16 @@ public class BandsInTownService {
                     String eventArtistName = eventJSON.getJSONArray("artists").getJSONObject(0).getString("name");
                     String eventArtistImageURL = eventJSON.getJSONArray("artists").getJSONObject(0).getString("thumb_url");
 
-                    ArrayList<String> eventImageURLArray = new ArrayList<>();
-                    JSONArray eventArtistsArray = eventJSON.getJSONArray("artists");
-                    for (int y = 0; y < eventArtistsArray.length(); y++) {
-                        JSONObject eventArtist = eventArtistsArray.getJSONObject(y);
-                        eventImageURLArray.add(eventArtistsArray.get(y).toString());
-                    }
+//                    ArrayList<String> eventImageURLArray = new ArrayList<>();
+//                    JSONArray eventArtistsArray = eventJSON.getJSONArray("artists");
+//                    for (int y = 0; y < eventArtistsArray.length(); y++) {
+//                        JSONObject eventArtist = eventArtistsArray.getJSONObject(y);
+//                        eventImageURLArray.add(eventArtistsArray.get(y).toString());
+//                    }
 
 
 
-                    Event event = new Event(eventTitle, eventFacebookRSVP, eventImageURLArray);
+                    Event event = new Event(eventTitle, eventFacebookRSVP, eventArtistImageURL);
                     events.add(event);
 
 
