@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.models.Event;
 import com.epicodus.concertaid.ui.EventDetailActivity;
+import com.epicodus.concertaid.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -20,7 +21,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-    public class EventViewHolder extends RecyclerView.ViewHolder {
+    public class EventViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
         @Bind(R.id.eventImageView) ImageView mEventImageView;
         @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
         //        @Bind(R.id.detailsTextView) TextView mDetailsTextView;
@@ -48,4 +49,15 @@ import butterknife.ButterKnife;
             Picasso.with(mContext).load(event.getEventImage()).into(mEventImageView);
 //          mDetailsTextView.setText(event.getEventTitle());
         }
+
+        @Override
+        public void onItemSelected() {
+            //  Will add code for animations here later.
+        }
+
+        @Override
+        public void onItemClear() {
+            //  Will add code for removing animations here later.
+        }
+
     }
