@@ -43,7 +43,7 @@ public class Event {
 
     public String getEventFacebookRSVP() { return eventFacebookRSVP;}
 
-    public String getEventImage() { return eventArtistImage;}
+    public String getEventArtistImage() { return eventArtistImage;}
 
 
 //    public String getEventArtist() {

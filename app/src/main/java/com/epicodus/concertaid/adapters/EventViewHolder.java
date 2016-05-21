@@ -46,7 +46,7 @@ import butterknife.ButterKnife;
         }
         public void bindEvent(Event event) {
             mEventNameTextView.setText(event.getEventTitle());
-            Picasso.with(mContext).load(event.getEventImage()).into(mEventImageView);
+            Picasso.with(mContext).load(event.getEventArtistImage()).into(mEventImageView);
 //          mDetailsTextView.setText(event.getEventTitle());
         }
 
