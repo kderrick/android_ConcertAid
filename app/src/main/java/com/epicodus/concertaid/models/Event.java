@@ -16,6 +16,7 @@ public class Event {
     String eventArtistImage;
     String eventArtistURL;
     String pushId;
+    String index;
 
     public Event() {};
 
@@ -27,6 +28,7 @@ public class Event {
         this.eventTitle = title;
         this.eventFacebookRSVP = facebookRSVP;
         this.eventArtistImage = eventArtistImage;
+        this.index = "not_specified";
 //        this.eventArtist = artist;
 //        this.eventVenue = venue;
 //        this.eventLatitude = latitude;
@@ -79,6 +81,14 @@ public class Event {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 
 
