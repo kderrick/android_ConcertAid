@@ -28,8 +28,7 @@ public class FirebaseEventListAdapter extends FirebaseRecyclerAdapter<EventViewH
     private final OnStartDragListener mDragStartListener;
     private Context mContext;
 
-    public FirebaseEventListAdapter(Query query, Class<Event> itemClass,
-                                         OnStartDragListener dragStartListener) {
+    public FirebaseEventListAdapter(Query query, Class<Event> itemClass, OnStartDragListener dragStartListener) {
         super(query, itemClass);
         mDragStartListener = dragStartListener;
     }
