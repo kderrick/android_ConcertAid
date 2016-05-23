@@ -47,7 +47,7 @@ public class SavedEventListActivity extends AppCompatActivity implements OnStart
     private void setUpFirebaseQuery() {
         String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
         String event = mFirebaseEventsRef.child(userUid).toString();
-        mQuery = new Firebase(event);
+        mQuery = new Firebase(event).orderByChild("index");
     }
 
     private void setUpRecyclerView() {
@@ -63,5 +63,18 @@ public class SavedEventListActivity extends AppCompatActivity implements OnStart
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String uid = mSharedPreferences.getString(Constants.KEY_UID, null);
+        for (Event event : mAdapter.getItems()) {
+            String pushID = event.getPushId();
+            event.setIndex(Integer.toString(mAdapter.getItems().indexOf(event)));
+            mFirebaseEventsRef.child(uid)
+                    .child(pushID)
+                    .setValue(event);
+        }
     }
 }
