@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.adapters.EventPagerAdapter;
 import com.epicodus.concertaid.models.Event;
+import com.epicodus.concertaid.util.ScaleAndFadePageTransformer;
 
 import org.parceler.Parcels;
 
@@ -30,5 +31,6 @@ public class EventDetailActivity extends AppCompatActivity {
         adapterViewPager = new EventPagerAdapter(getSupportFragmentManager(), mEvents);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
+        mViewPager.setPageTransformer(true, new ScaleAndFadePageTransformer());
     }
 }
