@@ -16,12 +16,15 @@
         android:scaleType="centerCrop"/>
         <ImageView
             android:id="@+id/dragIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignLeft="@id/eventImageView"
             android:layout_alignBottom="@id/eventImageView"
             android:gravity="bottom|left"
-            android:src="@drawable/ic_delete_sweep_white_24dp"/>
+            android:src="@drawable/ic_delete_sweep_white_24dp"
+            android:layout_alignParentRight="false"
+            android:tint="#9589fd"
+            android:layout_alignParentTop="false" />
 
     </RelativeLayout>
 
