@@ -29,7 +29,6 @@ public class Event {
 
     public Event(String title, String facebookRSVP, String eventArtistImage, String artistName, String artistFacebook, String ticketURL, String formattedDate, String formattedLocation, String artistWebsite, String venueName, double venueLongitude, double venueLatitude) {
 
-//        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL
 
         this.eventTitle = title;
         this.eventFacebookRSVP = facebookRSVP;

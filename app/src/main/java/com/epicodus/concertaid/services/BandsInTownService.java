@@ -62,22 +62,21 @@ public class BandsInTownService {
                 for (int i = 0; i < bandsInTownJSON.length(); i++) {
                     JSONObject eventJSON = bandsInTownJSON.getJSONObject(i);
                     String eventTitle = eventJSON.getString("title");
-                    String formattedDateTime = eventJSON.getString("formatted_datetime");
                     String eventFacebookRSVP = eventJSON.getString("facebook_rsvp_url");
-                    String eventCityState = eventJSON.getString("formatted_location");
-                    String eventArtistName = eventJSON.getJSONArray("artists").getJSONObject(0).getString("name");
                     String eventArtistImageURL = eventJSON.getJSONArray("artists").getJSONObject(0).getString("thumb_url");
+                    String eventArtistName = eventJSON.getJSONArray("artists").getJSONObject(0).getString("name");
+                    String eventArtistFacebook = eventJSON.getJSONArray("artists").getJSONObject(0).getString("facebook_page_url");
+                    String eventTicketURL = eventJSON.getString("ticket_url");
+                    String eventFormattedDate = eventJSON.getString("formatted_datetime");
+                    String eventFormattedLocation = eventJSON.getString("formatted_location");
+                    String eventArtistWebsite = eventJSON.getJSONArray("artists").getJSONObject(0).getString("website");
+                    String eventVenueName = eventJSON.getJSONObject("venue").getString("name");
+                    double eventVenueLongitude = eventJSON.getJSONObject("venue").getDouble("longitude");
+                    double eventVenueLatitude = eventJSON.getJSONObject("venue").getDouble("latitude");
 
-//                    ArrayList<String> eventImageURLArray = new ArrayList<>();
-//                    JSONArray eventArtistsArray = eventJSON.getJSONArray("artists");
-//                    for (int y = 0; y < eventArtistsArray.length(); y++) {
-//                        JSONObject eventArtist = eventArtistsArray.getJSONObject(y);
-//                        eventImageURLArray.add(eventArtistsArray.get(y).toString());
-//                    }
 
 
-
-                    Event event = new Event(eventTitle, eventFacebookRSVP, eventArtistImageURL);
+                    Event event = new Event(eventTitle, eventFacebookRSVP, eventArtistImageURL, eventArtistName, eventArtistFacebook, eventTicketURL, eventFormattedDate, eventFormattedLocation, eventArtistWebsite, eventVenueName, eventVenueLongitude, eventVenueLatitude);
                     events.add(event);
 
 
