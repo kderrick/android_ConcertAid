@@ -10,32 +10,40 @@ import java.util.List;
 public class Event {
     String eventTitle;
     String eventFacebookRSVP;
-    String eventArtist;
-    String eventVenue;
-    String eventDate;
     String eventArtistImage;
-    String eventArtistURL;
+    String eventArtist;
+    String eventArtistFacebook;
+    String eventTicketURL;
+    String eventDate;
+    String eventLocation;
+    String eventArtistWebsite;
+    String eventVenueName;
+    double eventLongitude;
+    double eventLatitude;
     String pushId;
     String index;
+
 
     public Event() {};
 
 
-    public Event(String title, String facebookRSVP, String eventArtistImage) {
+    public Event(String title, String facebookRSVP, String eventArtistImage, String artistName, String artistFacebook, String ticketURL, String formattedDate, String formattedLocation, String artistWebsite, String venueName, double venueLongitude, double venueLatitude) {
 
 //        , String artist, String venue, double latitude, double  longitude, String date, String artistImage, String artistURL
 
         this.eventTitle = title;
         this.eventFacebookRSVP = facebookRSVP;
         this.eventArtistImage = eventArtistImage;
+        this.eventArtist = artistName;
+        this.eventArtistFacebook = artistFacebook;
+        this.eventTicketURL = ticketURL;
+        this.eventDate = formattedDate;
+        this.eventLocation = formattedLocation;
+        this.eventArtistWebsite = artistWebsite;
+        this.eventVenueName = venueName;
+        this.eventLongitude = venueLongitude;
+        this.eventLatitude = venueLatitude;
         this.index = "not_specified";
-//        this.eventArtist = artist;
-//        this.eventVenue = venue;
-//        this.eventLatitude = latitude;
-//        this.eventLongitude = longitude;
-//        this.eventDate = date;
-//        this.eventArtistImage = artistImage;
-//        this.eventArtistURL = artistURL;
     }
 
 
@@ -48,32 +56,41 @@ public class Event {
     public String getEventArtistImage() { return eventArtistImage;}
 
 
-//    public String getEventArtist() {
-//        return eventArtist;
-//    }
-//
-//    public String getEventVenue() {
-//        return eventVenue;
-//    }
-//
-//    public double getEventLatitude() {
-//        return eventLatitude;
-//    }
-//
-//    public double getEventLongitude() {
-//        return eventLongitude;
-//    }
-//
-//    public String getEventDate() {
-//        return eventDate;
-//    }
-//
-//    public String getEventArtistImage() {
-//        return eventArtistImage;
-//    }
-//    public String getEventArtistURL() {
-//        return eventArtistURL;
-//    }
+    public String getEventArtist() {
+        return eventArtist;
+    }
+
+    public String getEventArtistFacebook() {
+        return eventArtistFacebook;
+    }
+
+    public String getEventTicketURL() {
+        return eventTicketURL;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public String getEventArtistWebsite() {
+        return eventArtistWebsite;
+    }
+
+    public String getEventVenueName() {
+        return eventVenueName;
+    }
+
+    public double getEventLatitude() {
+        return eventLatitude;
+    }
+
+    public double getEventLongitude() {
+        return eventLongitude;
+    }
 
     public String getPushId() {
         return pushId;
