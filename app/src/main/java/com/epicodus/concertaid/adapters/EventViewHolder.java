@@ -45,9 +45,8 @@ import butterknife.ButterKnife;
             });
         }
         public void bindEvent(Event event) {
-            mEventNameTextView.setText(event.getEventTitle());
+            mEventNameTextView.setText(event.getEventArtist() + " " + event.getEventDate());
             Picasso.with(mContext).load(event.getEventArtistImage()).into(mEventImageView);
-//          mDetailsTextView.setText(event.getEventTitle());
         }
 
         @Override
