@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
@@ -71,7 +72,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         });
 
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
+//        String userName = intent.getStringExtra("userName");
         mTextViewWelcome.setText("Welcome");
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -89,6 +90,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         if (v == mSubmitButton) {
             String userArtist = mEditTextArtist.getText().toString();
+
+
             String userCity = mEditTextCity.getText().toString();
             String userState = mEditTextState.getText().toString();
             if(!(userCity).equals("") && !(userState).equals("")) {
@@ -96,8 +99,13 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             }
 
             Intent intent = new Intent(WelcomeActivity.this, DisplayListActivity.class);
-            intent.putExtra("userArtist", userArtist);
-            startActivity(intent);
+            if(userArtist.length() == 0) {
+                Toast.makeText(WelcomeActivity.this, "Please Enter An Artist", Toast.LENGTH_SHORT).show();
+            } else {
+                intent.putExtra("userArtist", userArtist);
+                startActivity(intent);
+
+            }
         }
 
         if (v == mSavedEventsButton) {
