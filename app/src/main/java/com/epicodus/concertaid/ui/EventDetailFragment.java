@@ -15,13 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.parceler.Parcels;
-
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.models.Event;
 import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +34,8 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.eventImageView) ImageView mEventImageView;
     @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
-    @Bind(R.id.testTextView) TextView mTestTextView;
+    @Bind(R.id.dateTextView) TextView mDateTextView;
+    @Bind(R.id.venueTextView) TextView mVenueTextView;
 
 
     @Bind(R.id.saveEventButton) Button mSaveEventButton;
@@ -69,6 +70,9 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mWebsiteTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
         mWebsiteTextView.setText("Click here to Get Tickets");
+        mDateTextView.setText("Date: " + mEvent.getEventDate());
+        mVenueTextView.setText("Venue: " + mEvent.getEventVenueName());
+
         Picasso.with(view.getContext()).load(mEvent.getEventArtistImage()).into(mEventImageView);
         // Inflate the layout for this fragment
         return view;
