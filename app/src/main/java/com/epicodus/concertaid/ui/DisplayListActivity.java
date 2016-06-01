@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 import android.support.v7.widget.SearchView;
+import android.widget.Toast;
 
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
@@ -69,10 +70,15 @@ public class DisplayListActivity extends AppCompatActivity {
 
                 mEvents = bandsInTownService.processResults(response);
 
+
                 DisplayListActivity.this.runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
+                            if(mEvents.size() == 0 ){
+                                Toast.makeText(DisplayListActivity.this, "Entered Artist returned no results, try another artist", Toast.LENGTH_LONG)                                 .show();
+
+                            }
                             mAdapter = new EventListAdapter(getApplicationContext(), mEvents);
                             mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DisplayListActivity.this);
