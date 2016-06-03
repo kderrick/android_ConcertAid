@@ -83,7 +83,8 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Date and Time" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,7 +95,19 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Venue Location" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/artistWebsiteTextView"
+                    android:drawableLeft="@drawable/ic_event_black_24dp"
+                    android:drawablePadding="4dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="Artist Website" />
 
             </LinearLayout>
 
@@ -107,6 +120,7 @@
                 android:background="@color/colorAccent"
                 android:textColor="#0288D1"
                 android:textSize="15sp" />
+
         </RelativeLayout>
     </LinearLayout>
 
