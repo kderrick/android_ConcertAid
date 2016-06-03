@@ -40,8 +40,8 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
 
     @Bind(R.id.saveEventButton) Button mSaveEventButton;
     private SharedPreferences mSharedPreferences;
-
     private Event mEvent;
+
 
 
 
@@ -68,10 +68,11 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
 
         mSaveEventButton.setOnClickListener(this);
         mWebsiteTextView.setOnClickListener(this);
+        mVenueTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
         mWebsiteTextView.setText("Click here to Get Tickets");
         mDateTextView.setText("Date: " + mEvent.getEventDate());
-        mVenueTextView.setText("Venue: " + mEvent.getEventVenueName());
+        mVenueTextView.setText("Google Maps : " + mEvent.getEventVenueName());
 
         Picasso.with(view.getContext()).load(mEvent.getEventArtistImage()).into(mEventImageView);
         // Inflate the layout for this fragment
@@ -81,6 +82,11 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         if (v == mWebsiteTextView) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getEventFacebookRSVP()));
+            startActivity(webIntent);
+        }
+
+        if (v == mVenueTextView) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/@" + mEvent                          .getEventLatitude() + "," + mEvent.getEventLongitude() + ",20z"));
             startActivity(webIntent);
         }
         if (v == mSaveEventButton) {
