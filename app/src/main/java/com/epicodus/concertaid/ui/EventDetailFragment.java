@@ -37,6 +37,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.dateTextView) TextView mDateTextView;
     @Bind(R.id.venueTextView) TextView mVenueTextView;
     @Bind(R.id.artistWebsiteTextView) TextView mArtistWebsiteTextView;
+    @Bind(R.id.artistFaceBookTextView) TextView mArtistFacebookTextView;
 
 
     @Bind(R.id.saveEventButton) Button mSaveEventButton;
@@ -80,11 +81,13 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mWebsiteTextView.setOnClickListener(this);
         mVenueTextView.setOnClickListener(this);
         mArtistWebsiteTextView.setOnClickListener(this);
+        mArtistFacebookTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
         mWebsiteTextView.setText("Click here to Get Tickets");
         mDateTextView.setText("Date: " + mEvent.getEventDate());
         mVenueTextView.setText("Google Maps : " + mEvent.getEventVenueName());
         mArtistWebsiteTextView.setText("Click here for " + mEvent.getEventArtist() + " website");
+        mArtistFacebookTextView.setText("Click here for " + mEvent.getEventArtist() + " Facebook");
 
         Picasso.with(view.getContext()).load(mEvent.getEventArtistImage()).into(mEventImageView);
         // Inflate the layout for this fragment
@@ -104,6 +107,11 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
 
         if (v == mArtistWebsiteTextView) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getEventArtistWebsite()));
+            startActivity(webIntent);
+        }
+
+        if (v == mArtistFacebookTextView) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getEventArtistFacebook()));
             startActivity(webIntent);
         }
         if (v == mSaveEventButton) {

@@ -109,6 +109,18 @@
                     android:gravity="center"
                     android:text="Artist Website" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/artistFaceBookTextView"
+                    android:drawableLeft="@drawable/ic_event_black_24dp"
+                    android:drawablePadding="4dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="Artist Facebook" />
+
             </LinearLayout>
 
             <Button
