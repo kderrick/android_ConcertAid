@@ -1,8 +1,6 @@
 package com.epicodus.concertaid;
 
-/**
- * Created by kylederrick on 4/27/16.
- */
+
 public class Constants {
 
     public static final String BANDS_IN_TOWN_ID = BuildConfig.BANDS_IN_TOWN_ID;
@@ -20,9 +18,10 @@ public class Constants {
     public static final String FIREBASE_URL_USERS = FIREBASE_URL + "/" + FIREBASE_PROPERTY_USERS;
     public static final String KEY_USER_EMAIL = "email";
 
+    public static final String KEY_SOURCE = "source";
+    public static final String SOURCE_SAVED = "saved";
+    public static final String SOURCE_FIND = "find";
+
 
 
 }
-
-//    public static final String exampleURL = "http://api.bandsintown.com/artists/explosions%20in%20the%20sky/events/recommended?location=portland,or&radius=25&app_id=YOUR_APP_ID&api_version=2.0&format=json"
-//}

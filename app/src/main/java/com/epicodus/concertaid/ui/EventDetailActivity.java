@@ -1,9 +1,11 @@
 package com.epicodus.concertaid.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
+import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.adapters.EventPagerAdapter;
 import com.epicodus.concertaid.models.Event;
@@ -20,6 +22,7 @@ public class EventDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager) ViewPager mViewPager;
     private EventPagerAdapter adapterViewPager;
     ArrayList<Event> mEvents = new ArrayList<>();
+    private String mSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,12 @@ public class EventDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mEvents = Parcels.unwrap(getIntent().getParcelableExtra("events"));
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
-        adapterViewPager = new EventPagerAdapter(getSupportFragmentManager(), mEvents);
+        Intent intent = getIntent();
+        mSource = intent.getStringExtra(Constants.KEY_SOURCE);
+        adapterViewPager = new EventPagerAdapter(getSupportFragmentManager(), mEvents, mSource);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
         mViewPager.setPageTransformer(true, new ScaleAndFadePageTransformer());
+
     }
 }

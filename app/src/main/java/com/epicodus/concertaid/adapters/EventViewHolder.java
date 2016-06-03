@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
 import com.epicodus.concertaid.models.Event;
 import com.epicodus.concertaid.ui.EventDetailActivity;
+import com.epicodus.concertaid.ui.SavedEventListActivity;
 import com.epicodus.concertaid.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -24,7 +26,6 @@ import butterknife.ButterKnife;
     public class EventViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
         @Bind(R.id.eventImageView) ImageView mEventImageView;
         @Bind(R.id.eventNameTextView) TextView mEventNameTextView;
-        //        @Bind(R.id.detailsTextView) TextView mDetailsTextView;
         private Context mContext;
         private ArrayList<Event> mEvents = new ArrayList<>();
 
@@ -40,6 +41,12 @@ import butterknife.ButterKnife;
                     Intent intent = new Intent(mContext, EventDetailActivity.class);
                     intent.putExtra("position", itemPosition + "");
                     intent.putExtra("events", Parcels.wrap(mEvents));
+
+                    if (mContext.getClass().getSimpleName().equals(SavedEventListActivity.class.getSimpleName())) {
+                        intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_SAVED);
+                    } else {
+                        intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_FIND);
+                    }
                     mContext.startActivity(intent);
                 }
             });

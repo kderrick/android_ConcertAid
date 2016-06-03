@@ -41,14 +41,16 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.saveEventButton) Button mSaveEventButton;
     private SharedPreferences mSharedPreferences;
     private Event mEvent;
+    private String mSource;
 
 
 
 
-    public static EventDetailFragment newInstance(Event event) {
+    public static EventDetailFragment newInstance(Event event, String source) {
         EventDetailFragment eventDetailFragment = new EventDetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("event", Parcels.wrap(event));
+        args.putString(Constants.KEY_SOURCE, source);
         eventDetailFragment.setArguments(args);
         return eventDetailFragment;
     }
@@ -58,6 +60,8 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         super.onCreate(savedInstanceState);
         mEvent = Parcels.unwrap(getArguments().getParcelable("event"));
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mSource = getArguments().getString(Constants.KEY_SOURCE);
+        setHasOptionsMenu(true);
     }
 
 
@@ -66,7 +70,12 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
         ButterKnife.bind(this,view);
 
-        mSaveEventButton.setOnClickListener(this);
+        if (mSource.equals(Constants.SOURCE_SAVED)) {
+            mSaveEventButton.setVisibility(View.GONE);
+        } else {
+            mSaveEventButton.setOnClickListener(this);
+        }
+
         mWebsiteTextView.setOnClickListener(this);
         mVenueTextView.setOnClickListener(this);
         mEventNameTextView.setText(mEvent.getEventTitle());
