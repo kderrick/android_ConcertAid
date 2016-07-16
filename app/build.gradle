@@ -8,6 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.epicodus.concertaid"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -56,4 +57,10 @@ dependencies {
     compile 'com.firebase:firebase-client-android:2.3.1'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'org.robolectric:shadows-support-v4:3.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile('com.android.support.test:runner:0.3') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 }
