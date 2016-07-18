@@ -11,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +33,13 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private static final String TAG = WelcomeActivity.class.getSimpleName();
     @Bind(R.id.textViewWelcome) TextView mTextViewWelcome;
     @Bind(R.id.editTextCity) EditText mEditTextCity;
-    @Bind(R.id.editTextState) EditText mEditTextState;
+//    @Bind(R.id.editTextState) EditText mEditTextState;
     @Bind(R.id.editTextArtist) EditText mEditTextArtist;
     @Bind(R.id.submitButton) Button mSubmitButton;
     @Bind(R.id.savedEventsButton) Button mSavedEventsButton;
+    @Bind(R.id.states_spinner) Spinner mStatesSpinner;
+
+
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private Firebase mFirebaseRef;
@@ -57,6 +62,14 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mUId = mSharedPreferences.getString(Constants.KEY_UID, null);
         mUserRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mUId);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.states_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        // Apply the adapter to the spinner
+        mStatesSpinner.setAdapter(adapter);
 
         mUserRefListener = mUserRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,7 +106,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
 
             String userCity = mEditTextCity.getText().toString();
-            String userState = mEditTextState.getText().toString();
+            String userState = mStatesSpinner.getSelectedItem().toString();
             if(!(userCity).equals("") && !(userState).equals("")) {
                 addToSharedPreferences(userCity, userState);
             }
