@@ -81,6 +81,18 @@
         android:textColor="#0288D1"
         android:textColorHint="#0288D1"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textViewWelcome"/>
+        android:layout_below="@+id/stateSelectionTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Choose State:"
+        android:textStyle="bold"
+        android:textColor="#0288D1"
+        android:textColorHint="#0288D1"
+        android:id="@+id/stateSelectionTextView"
+        android:layout_below="@+id/textViewWelcome"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
