@@ -12,7 +12,7 @@ import com.epicodus.concertaid.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     @Bind(R.id.submitLoginButton) Button mSubmitLoginButton;
     @Bind(R.id.editTextUsername) EditText mEditTextUsername;
     @Bind(R.id.editTextPassword) EditText mEditTextPassword;
@@ -23,17 +23,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSubmitLoginButton.setOnClickListener(this);
-    }
-    @Override
-    public void onClick(View v) {
-        if (v == mSubmitLoginButton) {
-            String userName = mEditTextUsername.getText().toString();
-            String userPassword = mEditTextPassword.getText().toString();
-
-            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
-            intent.putExtra("userName", userName);
-            startActivity(intent);
-        }
     }
 }
