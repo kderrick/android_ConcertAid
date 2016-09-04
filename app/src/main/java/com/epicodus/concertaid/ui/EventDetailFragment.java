@@ -93,6 +93,9 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         return view;
     }
+
+
+
     @Override
     public void onClick(View v) {
         if (v == mWebsiteTextView) {
@@ -101,7 +104,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         }
 
         if (v == mVenueTextView) {
-            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/@" + mEvent                          .getEventLatitude() + "," + mEvent.getEventLongitude() + ",20z"));
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/@" + mEvent                          .getEventLatitude() + "," + mEvent.getEventLongitude() + ",15z"));
             startActivity(webIntent);
         }
 

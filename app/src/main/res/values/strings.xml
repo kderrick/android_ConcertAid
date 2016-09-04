@@ -57,4 +57,5 @@
         <item>WI</item>
         <item>WY</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

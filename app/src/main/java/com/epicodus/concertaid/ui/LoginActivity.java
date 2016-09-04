@@ -1,16 +1,19 @@
 package com.epicodus.concertaid.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +27,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity  implements View.OnClickListener {
-    @Bind(R.id.textView4) TextView mTextView4;
     @Bind(R.id.registerTextView) TextView mRegisterTextView;
     public static final String TAG = LoginActivity.class.getSimpleName();
     @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
+    @Bind(R.id.linearLayout) LinearLayout mLinearLayout;
+    @Bind(R.id.loginTextView) TextView mLoginTextView;
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
@@ -48,6 +52,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         mSharedPreferencesEditor = mSharedPreferences.edit();
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mPasswordLoginButton.setOnClickListener(this);
+        mLinearLayout.setOnClickListener(this);
+        mLoginTextView.setOnClickListener(this);
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading...");
         mAuthProgressDialog.setMessage("Authenticating with Database...");
@@ -57,7 +63,9 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
             mEmailEditText.setText(signupEmail);
         }
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
-        mTextView4.setTypeface(tf);
+        mLoginTextView.setTypeface(tf);
+
+
     }
 
     @Override
@@ -69,6 +77,10 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();
+        }
+        if (view == mLinearLayout || (view == mLoginTextView)) {
+            System.out.println("TRYING TO HIDE THE KEYBOARD");
+            hideSoftKeyboard(this);
         }
     }
 
@@ -122,6 +134,12 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
     private void showErrorToast(String message) {
         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
+    public  void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity
+                .getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
 }

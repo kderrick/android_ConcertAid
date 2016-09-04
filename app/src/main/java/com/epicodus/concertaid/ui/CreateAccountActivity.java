@@ -28,7 +28,6 @@ import butterknife.ButterKnife;
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = CreateAccountActivity.class.getSimpleName();
-    @Bind(R.id.textView4) TextView mTextView4;
     @Bind(R.id.createUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
@@ -51,7 +50,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mSharedPreferencesEditor = mSharedPreferences.edit();
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
-        mTextView4.setTypeface(tf);
+        mLoginTextView.setTypeface(tf);
     }
 
     @Override
