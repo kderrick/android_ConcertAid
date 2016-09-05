@@ -40,7 +40,7 @@ public class LoginActivityUnitTest {
 
     @Test
     public void validateTextViewContent() {
-        TextView textView4 = (TextView) activity.findViewById(R.id.loginTextView);
+        TextView textView4 = (TextView) activity.findViewById(R.id.signUpTextView);
         assertTrue("Login".equals(textView4.getText().toString()));
     }
 

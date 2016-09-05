@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,18 +24,23 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateAccountActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = CreateAccountActivity.class.getSimpleName();
+
+    //BIND VIEWS
     @Bind(R.id.createUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
-    @Bind(R.id.loginTextView) TextView mLoginTextView;
+    @Bind(R.id.signUpTextView) TextView mLoginTextView;
+
+    //INITIALIZE FIELDS
     private Firebase mFirebaseRef;
     private SharedPreferences.Editor mSharedPreferencesEditor;
     private SharedPreferences mSharedPreferences;
+
 
 
     @Override
@@ -44,11 +48,18 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         ButterKnife.bind(this);
+        //CREATE FIREBASE REFERENCE
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
+
+//      SET ONCLICK LISTENERS
         mCreateUserButton.setOnClickListener(this);
         mLoginTextView.setOnClickListener(this);
+
+        //SET SHARED PREFERENCES
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mSharedPreferencesEditor = mSharedPreferences.edit();
+
+//      SET FONT
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
         mLoginTextView.setTypeface(tf);
     }
@@ -63,6 +74,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     startActivity(loginIntent);
             finish();
         }
+//        if (view == )
     }
     public void createNewUser() {
         final String name = mNameEditText.getText().toString();
@@ -132,9 +144,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         userLocation.setValue(newUser);
     }
 
-    private void showErrorToast(String message) {
-        Toast.makeText(CreateAccountActivity.this, message, Toast.LENGTH_LONG).show();
-    }
     private boolean isValidEmail(String email) {
         boolean isGoodEmail =
                 (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());

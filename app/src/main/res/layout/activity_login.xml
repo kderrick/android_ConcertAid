@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/loginTextView"
+        android:id="@+id/signUpTextView"
         android:textSize="50sp"
         android:textColor="#0288D1"
         android:gravity="center"
@@ -34,7 +34,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/loginTextView"
+        android:layout_below="@+id/signUpTextView"
         android:id="@+id/linearLayout">
 
         <EditText
