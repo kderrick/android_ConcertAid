@@ -26,14 +26,19 @@ import com.firebase.client.FirebaseError;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity  implements View.OnClickListener {
-    @Bind(R.id.registerTextView) TextView mRegisterTextView;
+public class LoginActivity extends BaseActivity  implements View.OnClickListener {
+
     public static final String TAG = LoginActivity.class.getSimpleName();
+
+    //BIND VIEWS
+    @Bind(R.id.registerTextView) TextView mRegisterTextView;
     @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.linearLayout) LinearLayout mLinearLayout;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
+
+//  INITIALIZE FIELDS
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
@@ -47,21 +52,36 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        //SET CLICK LISTENERS
         mRegisterTextView.setOnClickListener(this);
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-        mSharedPreferencesEditor = mSharedPreferences.edit();
-        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
         mPasswordLoginButton.setOnClickListener(this);
         mLinearLayout.setOnClickListener(this);
         mLoginTextView.setOnClickListener(this);
+
+
+        //SET SHARED PREFERENCES MANAGER AND EDITOR
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+        mSharedPreferencesEditor = mSharedPreferences.edit();
+
+        //SET FIREBASE REFERENCE
+        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
+
+
+        //SET DIALOG FOR AUTHENTICATION
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading...");
         mAuthProgressDialog.setMessage("Authenticating with Database...");
         mAuthProgressDialog.setCancelable(false);
+
+
+        //
         String signupEmail = mSharedPreferences.getString(Constants.KEY_USER_EMAIL, null);
         if (signupEmail != null) {
             mEmailEditText.setText(signupEmail);
         }
+
+        //SETS FONT LOGIN TITLE
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
         mLoginTextView.setTypeface(tf);
 
@@ -78,8 +98,8 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
             startActivity(intent);
             finish();
         }
+        //HIDES SOFTKEYBOARD IF CLICKED OUTSIDE EDIT TEXT
         if (view == mLinearLayout || (view == mLoginTextView)) {
-            System.out.println("TRYING TO HIDE THE KEYBOARD");
             hideSoftKeyboard(this);
         }
     }
@@ -120,7 +140,7 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                         mEmailEditText.setError("Please check that you entered your email correctly");
                         break;
                     case FirebaseError.INVALID_PASSWORD:
-                        mEmailEditText.setError(firebaseError.getMessage());
+                        mPasswordEditText.setError(firebaseError.getMessage());
                         break;
                     case FirebaseError.NETWORK_ERROR:
                         showErrorToast("There was a problem with the network connection");
@@ -134,12 +154,6 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
     private void showErrorToast(String message) {
         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
-    }
-
-    public  void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager) activity
-                .getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
 }
