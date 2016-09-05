@@ -133,9 +133,6 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
                 });
             }
 
-            private void showErrorToast(String message) {
-                Toast.makeText(CreateAccountActivity.this, message, Toast.LENGTH_LONG).show();
-            }
 
             @Override
             public void onError(FirebaseError firebaseError) {
@@ -145,12 +142,14 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
         });
     }
 
+
     private void createUserInFirebaseHelper(final String name, final String email, final String uid) {
         final Firebase userLocation = new Firebase(Constants.FIREBASE_URL_USERS).child(uid);
         User newUser = new User(name, email);
         userLocation.setValue(newUser);
     }
 
+    //VERIFIES EMAIL ENTERED MATCHES STANDARD EMAIL @ PATTERN
     private boolean isValidEmail(String email) {
         boolean isGoodEmail =
                 (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
@@ -161,6 +160,7 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
         return isGoodEmail;
     }
 
+    //CHECKS NAME FIELD IS NOT SUBMITTED BLANK
     private boolean isValidName(String name) {
         if (name.equals("")) {
             mNameEditText.setError("Please enter your name");
@@ -169,9 +169,10 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
         return true;
     }
 
+    //    CHECK IF PASSWORD IS AT LEAST 8 characters with an upper, lower, number and special and matches confirm password
     private boolean isValidPassword(String password, String confirmPassword) {
-        if (password.length() < 6) {
-            mPasswordEditText.setError("Please create a password containing at least 6 characters");
+        if ((password.length() < 8) || (password.equals(password.toLowerCase()) || (password.equals(password.toUpperCase())) || (password.matches("[A-Za-z0-9 ]*")) || (!password.matches(".*\\d+.*")))){
+            mPasswordEditText.setError("Please create a password containing at least 8 characters total, at least 1 uppercase character, at least 1 lowercase character and at least 1 special character");
             return false;
         } else if (!password.equals(confirmPassword)) {
             mPasswordEditText.setError("Passwords do not match");
