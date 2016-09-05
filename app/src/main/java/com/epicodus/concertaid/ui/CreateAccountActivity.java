@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,9 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
-    @Bind(R.id.signUpTextView) TextView mLoginTextView;
+    @Bind(R.id.loginTextView) TextView mLoginTextView;
+    @Bind(R.id.signUpTextView) TextView mSignUpTextView;
+    @Bind(R.id.linearLayout) LinearLayout mLinearLayout;
 
     //INITIALIZE FIELDS
     private Firebase mFirebaseRef;
@@ -54,6 +57,8 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
 //      SET ONCLICK LISTENERS
         mCreateUserButton.setOnClickListener(this);
         mLoginTextView.setOnClickListener(this);
+        mLinearLayout.setOnClickListener(this);
+        mSignUpTextView.setOnClickListener(this);
 
         //SET SHARED PREFERENCES
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -61,7 +66,7 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
 
 //      SET FONT
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
-        mLoginTextView.setTypeface(tf);
+        mSignUpTextView.setTypeface(tf);
     }
 
     @Override
@@ -74,7 +79,9 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
                     startActivity(loginIntent);
             finish();
         }
-//        if (view == )
+        if ((view == mSignUpTextView) || (view == mLinearLayout)) {
+            hideSoftKeyboard(this);
+        }
     }
     public void createNewUser() {
         final String name = mNameEditText.getText().toString();
