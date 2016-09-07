@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,17 +31,19 @@ import com.firebase.client.ValueEventListener;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class WelcomeActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = WelcomeActivity.class.getSimpleName();
+    //BIND VIEWS
     @Bind(R.id.textViewWelcome) TextView mTextViewWelcome;
     @Bind(R.id.editTextCity) EditText mEditTextCity;
-//    @Bind(R.id.editTextState) EditText mEditTextState;
     @Bind(R.id.editTextArtist) EditText mEditTextArtist;
     @Bind(R.id.submitButton) Button mSubmitButton;
     @Bind(R.id.savedEventsButton) Button mSavedEventsButton;
     @Bind(R.id.states_spinner) Spinner mStatesSpinner;
+    @Bind(R.id.relativeLayout) RelativeLayout mRelativeLayout;
+    @Bind(R.id.imageView) ImageView mImageView;
 
-
+    //INITIALIZE FIELDS
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private Firebase mFirebaseRef;
@@ -48,20 +52,31 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private String mUId;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
 
+        //SET ONCLICKLISTENERS
         mSavedEventsButton.setOnClickListener(this);
+        mSubmitButton.setOnClickListener(this);
+        mRelativeLayout.setOnClickListener(this);
+        mTextViewWelcome.setOnClickListener(this);
+        mImageView.setOnClickListener(this);
 
+        //GET SHARED PREFERENCES AND SHARED PREF EDITOR
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        //GET USER ID FROM SHARED PREFS
         mUId = mSharedPreferences.getString(Constants.KEY_UID, null);
+
+        //GET USER REFERENCE FROM FIREBASE
         mUserRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mUId);
+
+        //GET REFERENCE TO FIREBASE
+        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this,
@@ -71,10 +86,17 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         // Apply the adapter to the spinner
         mStatesSpinner.setAdapter(adapter);
 
+        //SETS FONT
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
+        mTextViewWelcome.setTypeface(tf);
+
+
+        // Attach an listener to read the data at our user reference
         mUserRefListener = mUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+//              SETS TEXT ON WELCOMEACTIVITY TO USER'S NAME
                 mTextViewWelcome.setText("Welcome, " + user.getName());
             }
 
@@ -83,33 +105,23 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                 Log.d(TAG, "Read failed");
             }
         });
-
-        Intent intent = getIntent();
-//        String userName = intent.getStringExtra("userName");
-        mTextViewWelcome.setText("Welcome");
-
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
-
-        mSubmitButton.setOnClickListener(this);
-
-        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
-
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
-        mTextViewWelcome.setTypeface(tf);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mSubmitButton) {
             String userArtist = mEditTextArtist.getText().toString();
-
-
             String userCity = mEditTextCity.getText().toString();
             String userState = mStatesSpinner.getSelectedItem().toString();
             if(!(userCity).equals("") && !(userState).equals("")) {
                 addToSharedPreferences(userCity, userState);
             }
+
+            //DOESNT HIDE KEYBOARD YET
+            if((v == mTextViewWelcome) || (v == mRelativeLayout) || (v == mImageView)) {
+                hideSoftKeyboard(this);
+            }
+
 
             Intent intent = new Intent(WelcomeActivity.this, DisplayListActivity.class);
             if(userArtist.length() == 0) {
