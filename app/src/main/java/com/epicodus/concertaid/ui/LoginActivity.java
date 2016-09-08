@@ -31,7 +31,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.linearLayout) LinearLayout mLinearLayout;
-    @Bind(R.id.signUpTextView) TextView mLoginTextView;
+    @Bind(R.id.loginTextView) TextView mLoginTextView;
 
 //  INITIALIZE FIELDS
     private Firebase mFirebaseRef;
