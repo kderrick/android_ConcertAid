@@ -117,12 +117,6 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
                 addToSharedPreferences(userCity, userState);
             }
 
-            //DOESNT HIDE KEYBOARD YET
-            if((v == mTextViewWelcome) || (v == mRelativeLayout) || (v == mImageView)) {
-                hideSoftKeyboard(this);
-            }
-
-
             Intent intent = new Intent(WelcomeActivity.this, DisplayListActivity.class);
             if(userArtist.length() == 0) {
                 Toast.makeText(WelcomeActivity.this, "Please Enter An Artist", Toast.LENGTH_SHORT).show();
@@ -136,6 +130,9 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
         if (v == mSavedEventsButton) {
             Intent intent = new Intent(WelcomeActivity.this, SavedEventListActivity.class);
             startActivity(intent);
+        }
+        if((v == mTextViewWelcome) || (v == mRelativeLayout) || (v == mImageView)) {
+            hideSoftKeyboard(this);
         }
     }
     private void addToSharedPreferences(String userCity, String userState) {
