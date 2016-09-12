@@ -32,6 +32,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.linearLayout) LinearLayout mLinearLayout;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
+    @Bind(R.id.forgotPasswordTextView) TextView mForgotPasswordTextView;
 
 //  INITIALIZE FIELDS
     private Firebase mFirebaseRef;
@@ -53,6 +54,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mPasswordLoginButton.setOnClickListener(this);
         mLinearLayout.setOnClickListener(this);
         mLoginTextView.setOnClickListener(this);
+        mForgotPasswordTextView.setOnClickListener(this);
 
 
         //SET SHARED PREFERENCES MANAGER AND EDITOR
@@ -96,6 +98,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         //HIDES SOFTKEYBOARD IF CLICKED OUTSIDE EDIT TEXT
         if (view == mLinearLayout || (view == mLoginTextView)) {
             hideSoftKeyboard(this);
+        }
+
+        if (view == mForgotPasswordTextView) {
+            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 

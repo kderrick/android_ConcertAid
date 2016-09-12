@@ -8,6 +8,7 @@ import android.widget.EditText;
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,7 +39,19 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
     }
 
     public void forgotPassword(String userEmail) {
-        mFirebaseRef.resetPassword(userEmail, null);
+        Firebase.ResultHandler handler = new Firebase.ResultHandler() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+
+            }
+
+        };
+        mFirebaseRef.resetPassword(userEmail, handler );
     }
 
 

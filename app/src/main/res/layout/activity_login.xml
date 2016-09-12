@@ -71,12 +71,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/colorTextIcons"
             android:textStyle="bold"
             android:textSize="15sp"
             android:text="Don't have an account? Sign up here!"
             android:id="@+id/registerTextView"
             android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password? Click Here"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:id="@+id/forgotPasswordTextView"
+            android:textColor="@color/colorTextIcons"/>
 
     </LinearLayout>
 
