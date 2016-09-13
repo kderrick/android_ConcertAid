@@ -153,7 +153,8 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
             return true;
         }
         if (id == R.id.action_profile) {
-
+            Intent intent = new Intent(WelcomeActivity.this, UserProfileActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

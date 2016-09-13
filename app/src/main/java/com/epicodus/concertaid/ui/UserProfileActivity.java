@@ -3,6 +3,8 @@ package com.epicodus.concertaid.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.epicodus.concertaid.R;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     @Override
