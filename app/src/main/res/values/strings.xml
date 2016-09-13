@@ -59,4 +59,5 @@
     </string-array>
     <string name="title_activity_maps">Map</string>
     <string name="already_have_an_account_log_in_here">Already have an account? Log in here!</string>
+    <string name="current_user_s_image">Current user\'s image</string>
 </resources>
