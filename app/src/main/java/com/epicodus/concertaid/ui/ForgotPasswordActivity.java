@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.epicodus.concertaid.Constants;
 import com.epicodus.concertaid.R;
@@ -42,12 +43,12 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
         Firebase.ResultHandler handler = new Firebase.ResultHandler() {
             @Override
             public void onSuccess() {
-
+                Toast.makeText(ForgotPasswordActivity.this, "Forgot Password email sent successfully", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onError(FirebaseError firebaseError) {
-
+                Toast.makeText(ForgotPasswordActivity.this, "There was an error, please try again", Toast.LENGTH_LONG).show();
             }
 
         };
