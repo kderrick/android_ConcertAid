@@ -45,7 +45,7 @@
         android:layout_below="@+id/addPhotoTextView"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/current_user_s_image"
-        android:src="@drawable/blankUser" />
+        android:src="@drawable/blank_user" />
 
     <TextView
         android:layout_width="wrap_content"
