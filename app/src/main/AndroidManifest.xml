@@ -57,7 +57,11 @@
             android:name=".ui.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ui.ForgotPasswordActivity" />
-        <activity android:name=".ui.UserProfileActivity"></activity>
+        <activity android:name=".ui.UserProfileActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.WelcomeActivity" />
+        </activity>
     </application>
 
 </manifest>
