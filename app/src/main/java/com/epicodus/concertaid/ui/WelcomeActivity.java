@@ -152,6 +152,9 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
             logout();
             return true;
         }
+        if (id == R.id.action_profile) {
+
+        }
         return super.onOptionsItemSelected(item);
     }
     protected void logout() {
