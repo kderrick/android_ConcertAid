@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Add Photo"
         android:textColor="#0288D1"
-        android:background="@color/material_grey_850"
+        android:background="@drawable/buttonshape"
         android:id="@+id/addPhotoButton"
         android:layout_below="@+id/summaryTextView"
         android:layout_centerHorizontal="true"
@@ -54,7 +54,7 @@
         android:text="Change Email Address"
         android:textColor="#0288D1"
         android:id="@+id/changeEmailButton"
-        android:background="@color/material_grey_850"
+        android:background="@drawable/buttonshape"
         android:layout_below="@+id/userPhotoImageView"
         android:layout_centerHorizontal="true"
         android:textSize="25sp"
@@ -67,7 +67,7 @@
         android:textSize="25sp"
         android:textColor="#0288D1"
         android:layout_marginTop="25dp"
-        android:background="@color/material_grey_850"
+        android:background="@drawable/buttonshape"
         android:id="@+id/changePasswordEmailButton"
         android:layout_below="@+id/changeEmailButton"
         android:layout_centerHorizontal="true" />
@@ -82,7 +82,7 @@
         android:id="@+id/deleteAccountButton"
         android:layout_below="@+id/changePasswordEmailButton"
         android:layout_centerHorizontal="true"
-        android:background="@color/material_grey_850" />
+        android:background="@drawable/buttonshape" />
 
 
 
