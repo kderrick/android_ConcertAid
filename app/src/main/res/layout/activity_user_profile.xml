@@ -26,59 +26,63 @@
         android:layout_centerHorizontal="true"
         android:textSize="40dp" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Photo"
         android:textColor="#0288D1"
-        android:id="@+id/addPhotoTextView"
+        android:background="@color/colorTextIcons"
+        android:id="@+id/addPhotoButton"
         android:layout_below="@+id/summaryTextView"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:layout_marginTop="30dp" />
+        android:textSize="25sp"
+        android:layout_marginTop="25dp" />
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/userPhotoImageView"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/addPhotoTextView"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/addPhotoButton"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/current_user_s_image"
         android:src="@drawable/blank_user" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Email Address"
         android:textColor="#0288D1"
-        android:id="@+id/changeEmailTextView"
+        android:id="@+id/changeEmailButton"
+        android:background="@color/colorTextIcons"
         android:layout_below="@+id/userPhotoImageView"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:layout_marginTop="40dp" />
+        android:textSize="25sp"
+        android:layout_marginTop="25dp" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Password"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#0288D1"
-        android:layout_marginTop="40dp"
-        android:id="@+id/changePasswordEmail"
-        android:layout_below="@+id/changeEmailTextView"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorTextIcons"
+        android:id="@+id/changePasswordEmailButton"
+        android:layout_below="@+id/changeEmailButton"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete Account"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#0288D1"
-        android:layout_marginTop="40dp"
-        android:id="@+id/deleteAccountTextView"
-        android:layout_below="@+id/changePasswordEmail"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="25dp"
+        android:id="@+id/deleteAccountButton"
+        android:layout_below="@+id/changePasswordEmailButton"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorTextIcons" />
 
 
 
