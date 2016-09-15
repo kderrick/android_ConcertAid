@@ -33,11 +33,12 @@
         android:layout_height="wrap_content"
         android:text="Submit Search"
         android:id="@+id/submitButton"
-        android:textColor="#0288D1"
+        android:textColor="@color/background_material_light"
         android:visibility="visible"
         android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="match_parent"
@@ -45,11 +46,12 @@
         android:text="My Saved Events"
         android:id="@+id/savedEventsButton"
         android:background="@color/colorAccent"
-        android:textColor="#0288D1"
+        android:textColor="@color/background_material_light"
         android:visibility="visible"
         android:layout="@+id/submitButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="wrap_content"

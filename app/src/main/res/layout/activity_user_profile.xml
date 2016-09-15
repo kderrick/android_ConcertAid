@@ -23,8 +23,9 @@
         android:textColor="#0288D1"
         android:id="@+id/summaryTextView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="40dp" />
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"

@@ -45,7 +45,8 @@
             android:hint="Email"
             android:textColorHint="@color/colorTextIcons"
             android:layout_marginTop="30dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/background_material_light" />
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -55,7 +56,8 @@
             android:padding="10dp"
             android:hint="Password"
             android:textColorHint="@color/colorTextIcons"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/background_material_light" />
 
         <Button
             android:id="@+id/passwordLoginButton"
@@ -65,7 +67,8 @@
             android:text="Log in"
             android:background="@color/colorAccent"
             android:layout_marginTop="15dp"
-            android:textColor="#0288D1" />
+            android:textColor="@color/primary_material_light"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
