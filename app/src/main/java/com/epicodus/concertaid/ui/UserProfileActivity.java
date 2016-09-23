@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -37,19 +38,24 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         if(view == mDeleteAccountButton) {
             AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
+            LayoutInflater inflater = UserProfileActivity.this.getLayoutInflater();
+            builder.setView(inflater.inflate(R.layout.delete_user_dialog, null));
+
             builder.setMessage(R.string.dialog_message)
                     .setTitle(R.string.dialog_title);
-            builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // User clicked OK button
-                }
-            });
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     // User cancelled the dialog
                 }
             });
+            builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User clicked OK button
+                }
+            });
+
             AlertDialog dialog = builder.create();
+            dialog.show();
             System.out.println("CLICKED IT");
         }
     }
