@@ -20,15 +20,14 @@ import com.firebase.client.FirebaseError;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class UserProfileActivity extends BaseActivity implements View.OnClickListener {
 
     @Bind(R.id.summaryTextView) TextView mSummaryTextView;
     @Bind(R.id.deleteAccountButton) Button mDeleteAccountButton;
-    @Bind(R.id.userEmailEditText) EditText mUserEmailEditText;
-    @Bind(R.id.userPasswordEditText) EditText mUserPasswordEditText;
 
+    private EditText mUserEmailEditText;
+    private EditText mUserPasswordEditText;
     private Firebase mFirebaseRef;
-
 
 
     @Override
@@ -51,28 +50,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         if(view == mDeleteAccountButton) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
-            LayoutInflater inflater = UserProfileActivity.this.getLayoutInflater();
-            builder.setView(inflater.inflate(R.layout.delete_user_dialog, null));
-
-            builder.setMessage(R.string.dialog_message)
-                    .setTitle(R.string.dialog_title);
-            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // User cancelled the dialog
-                }
-            });
-            builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // User clicked OK button
-                    String userEmail = mUserEmailEditText.getText().toString();
-                    String userPassword = mUserPasswordEditText.getText().toString();
-                    mFirebaseRef.removeUser(userEmail, userPassword, );
-                }
-            });
-
-            AlertDialog dialog = builder.create();
-            dialog.show();
+            createAlertDialog();
         }
     }
 
@@ -82,6 +60,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
             public void onSuccess() {
 //                NEED TO MAKE SURE GOES BACK TO LOGIN
                 Toast.makeText(UserProfileActivity.this, "User deleted Successflly", Toast.LENGTH_LONG).show();
+                takeUserToLoginScreenOnUnAuth();
             }
 
             @Override
@@ -91,5 +70,33 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
 
         };
         mFirebaseRef.removeUser(userEmail, userPassword, handler );
+    }
+
+    public void createAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
+        LayoutInflater inflater = UserProfileActivity.this.getLayoutInflater();
+        View rootView = inflater.inflate(R.layout.delete_user_dialog, null);
+        mUserEmailEditText = (EditText) rootView.findViewById(R.id.userEmailEditText);
+        mUserPasswordEditText = (EditText) rootView.findViewById(R.id.userPasswordEditText);
+        builder.setView(rootView);
+
+        builder.setMessage(R.string.dialog_message)
+                .setTitle(R.string.dialog_title);
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                    String userEmail = mUserEmailEditText.getText().toString();
+                    String userPassword = mUserPasswordEditText.getText().toString();
+                    deleteUser(userEmail, userPassword);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
