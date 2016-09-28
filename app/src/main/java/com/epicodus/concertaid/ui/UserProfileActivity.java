@@ -1,7 +1,9 @@
 package com.epicodus.concertaid.ui;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +30,10 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
     private EditText mUserEmailEditText;
     private EditText mUserPasswordEditText;
     private Firebase mFirebaseRef;
+    private SharedPreferences.Editor mSharedPreferencesEditor;
+    private SharedPreferences mSharedPreferences;
+    private String mUId;
+    private Firebase mUserRef;
 
 
     @Override
@@ -45,12 +51,24 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/MUSICNET.ttf");
         mSummaryTextView.setTypeface(tf);
 
+//        //GET USER ID FROM SHARED PREFS
+//        mUId = mSharedPreferences.getString(Constants.KEY_UID, null);
+//
+//        //GET USER REFERENCE FROM FIREBASE
+//        mUserRef = new Firebase(Constants.FIREBASE_URL_USERS).child(mUId);
+
+        //SET SHARED PREFERENCES
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferencesEditor = mSharedPreferences.edit();
+
+
     }
 
     @Override
     public void onClick(View view) {
         if(view == mDeleteAccountButton) {
             createAlertDialog();
+//            deleteUserAndUserEventsInFirebase();
         }
     }
 
@@ -99,4 +117,14 @@ public class UserProfileActivity extends BaseActivity implements View.OnClickLis
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+//    public void deleteUserAndUserEventsInFirebase() {
+//        System.out.println("DOES IT GET HERE EVEN?");
+//        String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+//        Firebase userEventsFirebaseRef = new Firebase(Constants.FIREBASE_URL_EVENTS).child(userUid);
+//        System.out.println("This is the user ID" + userEventsFirebaseRef);
+////        final Firebase userLocation = new Firebase(Constants.FIREBASE_URL_USERS).child(uid);
+//
+//    }
+
 }
